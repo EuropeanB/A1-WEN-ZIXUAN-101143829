@@ -18,7 +18,7 @@ public class RESP_01_Test {
     }
 
     @Test
-    @DisplayName("Check the first book in catalogue")
+    @DisplayName("Check the first book title in catalogue")
     void RESP_01_test_02(){
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();

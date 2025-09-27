@@ -19,7 +19,7 @@ public class Catalogue {
     }
 
     Book getBook(int index){
-        return null ;
+        return catalogue.get(index);
     }
 
 }

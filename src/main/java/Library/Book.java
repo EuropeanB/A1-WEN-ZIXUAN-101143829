@@ -11,6 +11,6 @@ public class Book {
     }
 
     public String getTitle(){
-        return "null";
+        return title;
     }
 }
