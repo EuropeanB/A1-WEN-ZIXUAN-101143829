@@ -24,6 +24,6 @@ public class Book {
         return author;
     }
     public Status getStatus(){
-        return null;
+        return status;
     }
 }
