@@ -15,7 +15,17 @@ public class RESP_01_Test {
         int size = catalogue.getCatalogueSize();
 
         assertEquals(20, size);
+    }
 
+    @Test
+    @DisplayName("Check the first book in catalogue")
+    void RESP_01_test_02(){
+        InitializeLibrary library = new InitializeLibrary();
+        Catalogue catalogue = library.initializeLibrary();
+
+        Book book = catalogue.getBook(0);
+        String title = book.getTitle();
+        assertEquals("book01", title);
     }
 
 }

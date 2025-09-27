@@ -18,4 +18,8 @@ public class Catalogue {
         catalogue.add(book);
     }
 
+    Book getBook(int index){
+        return null ;
+    }
+
 }
