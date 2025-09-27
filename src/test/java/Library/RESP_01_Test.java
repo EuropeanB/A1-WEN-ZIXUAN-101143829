@@ -50,4 +50,15 @@ public class RESP_01_Test {
         }
     }
 
+    @Test
+    @DisplayName("Check the books' due date")
+    void RESP_01_test_05(){
+        InitializeLibrary library = new InitializeLibrary();
+        Catalogue catalogue = library.initializeLibrary();
+        for (int i = 0; i < catalogue.getCatalogueSize(); i++) {
+            assertTrue(catalogue.getBook(i).getDueDate().isEmpty());
+            assertEquals("-", catalogue.getBook(i).getDueDateText());
+        }
+    }
+
 }

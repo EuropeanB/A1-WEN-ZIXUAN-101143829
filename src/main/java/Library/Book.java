@@ -1,5 +1,8 @@
 package Library;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 // Book: Handing the book's parameters
 public class Book {
 
@@ -10,10 +13,16 @@ public class Book {
     public enum Status { Available, Checked_out, On_hold }
     private Status status = Status.Available;
 
+    private Optional<LocalDate> dueDate = Optional.empty();
+
 
     public Book(String title, String author){
         this.title = title;
         this.author = author;
+    }
+
+    public String getDueDateText(){
+        return dueDate.map(LocalDate::toString).orElse("-");
     }
 
     // getters
@@ -25,5 +34,8 @@ public class Book {
     }
     public Status getStatus(){
         return status;
+    }
+    public Optional<LocalDate> getDueDate() {
+        return null;
     }
 }

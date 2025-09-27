@@ -14,10 +14,10 @@ public class Catalogue {
         return catalogue.size();
     }
 
-
     public void addBook(Book book){
         catalogue.add(book);
     }
+
     public Book getBook(int index){
         return catalogue.get(index);
     }
