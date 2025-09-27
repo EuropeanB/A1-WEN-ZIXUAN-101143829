@@ -16,11 +16,13 @@ public class Book {
     private Optional<LocalDate> dueDate = Optional.empty();
 
 
+    // Book initialized
     public Book(String title, String author){
         this.title = title;
         this.author = author;
     }
 
+    // Output the due date
     public String getDueDateText(){
         return dueDate.map(LocalDate::toString).orElse("-");
     }
@@ -36,6 +38,6 @@ public class Book {
         return status;
     }
     public Optional<LocalDate> getDueDate() {
-        return null;
+        return dueDate;
     }
 }

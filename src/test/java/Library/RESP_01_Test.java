@@ -25,6 +25,7 @@ public class RESP_01_Test {
 
         Book book = catalogue.getBook(0);
         String title = book.getTitle();
+
         assertEquals("book01", title);
     }
 
@@ -36,6 +37,7 @@ public class RESP_01_Test {
 
         Book book = catalogue.getBook(19);
         String author = book.getAuthor();
+
         assertEquals("author20", author);
     }
 
@@ -55,6 +57,7 @@ public class RESP_01_Test {
     void RESP_01_test_05(){
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
+
         for (int i = 0; i < catalogue.getCatalogueSize(); i++) {
             assertTrue(catalogue.getBook(i).getDueDate().isEmpty());
             assertEquals("-", catalogue.getBook(i).getDueDateText());
