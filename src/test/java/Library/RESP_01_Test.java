@@ -1,0 +1,21 @@
+package Library;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RESP_01_Test {
+
+    @Test
+    @DisplayName("Check library catalogue size is 20")
+    void RESP_01_test_01(){
+        InitializeLibrary library = new InitializeLibrary();
+        Catalogue catalogue = library.initializeLibrary();
+
+        int size = catalogue.getCatalogueSize();
+
+        assertEquals(20, size);
+
+    }
+
+}
