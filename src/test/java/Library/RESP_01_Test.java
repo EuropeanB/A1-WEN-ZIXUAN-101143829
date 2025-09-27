@@ -34,9 +34,9 @@ public class RESP_01_Test {
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 
-        Book book = catalogue.getBook(0);
+        Book book = catalogue.getBook(19);
         String author = book.getAuthor();
-        assertEquals("author01", author);
+        assertEquals("author20", author);
     }
 
 }
