@@ -28,4 +28,15 @@ public class RESP_01_Test {
         assertEquals("book01", title);
     }
 
+    @Test
+    @DisplayName("Check the first book Author in catalogue")
+    void RESP_01_test_03(){
+        InitializeLibrary library = new InitializeLibrary();
+        Catalogue catalogue = library.initializeLibrary();
+
+        Book book = catalogue.getBook(0);
+        String author = book.getAuthor();
+        assertEquals("author01", author);
+    }
+
 }
