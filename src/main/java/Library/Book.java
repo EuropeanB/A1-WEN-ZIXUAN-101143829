@@ -4,8 +4,12 @@ package Library;
 public class Book {
 
 
-    String title;
-    String author;
+    private final String title;
+    private final String author;
+
+    public enum Status { Available, Checked_out, On_hold }
+    private Status status = Status.Available;
+
 
     public Book(String title, String author){
         this.title = title;
@@ -18,5 +22,8 @@ public class Book {
     }
     public String getAuthor(){
         return author;
+    }
+    public Status getStatus(){
+        return null;
     }
 }

@@ -39,4 +39,15 @@ public class RESP_01_Test {
         assertEquals("author20", author);
     }
 
+    @Test
+    @DisplayName("Check the books' Status")
+    void RESP_01_test_04(){
+        InitializeLibrary library = new InitializeLibrary();
+        Catalogue catalogue = library.initializeLibrary();
+
+        for (int i = 0; i < catalogue.getCatalogueSize(); i++) {
+            assertEquals(Book.Status.Available, catalogue.getBook(i).getStatus());
+        }
+    }
+
 }
