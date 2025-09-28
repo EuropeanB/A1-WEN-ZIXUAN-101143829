@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+//  System book collection initialization
+//  UC-01 preconditions
+
 public class RESP_01_Test {
 
     @Test
