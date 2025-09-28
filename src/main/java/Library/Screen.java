@@ -27,7 +27,14 @@ public class Screen {
     }
 
     public void loginNotification(List<Book> books){
-        System.out.println("Null");
+        if(!books.isEmpty()){
+            System.out.println("The books returned and you can borrow right now!");
+            for (Book b : books) {
+                System.out.println("- " + b.getTitle() + " by " + b.getAuthor());
+            }
+        } else{
+            System.out.println("There is no any notification...");
+        }
     }
 
 }
