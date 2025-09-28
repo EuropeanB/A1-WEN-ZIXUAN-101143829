@@ -39,7 +39,19 @@ public class Screen {
     }
 
     public int MainMenu() {
-        return 0;
+        System.out.println("\nPlease select：");
+        System.out.println("1. Borrow");
+        System.out.println("2. Return");
+        System.out.println("3. Log out");
+        System.out.print("Type 1/2/3: ");
+        while (true) {
+            String s = scanner.nextLine().trim();
+            try {
+                int c = Integer.parseInt(s);
+                if (c >= 1 && c <= 3) return c;
+            } catch (NumberFormatException ignored) {}
+            System.out.print("Invalid input, try again!!!\n ");
+        }
     }
 
 }

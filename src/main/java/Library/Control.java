@@ -52,7 +52,16 @@ public class Control {
 
     // Main menu
     private void mainMenuLoop(Borrower user) {
-        System.out.println("null");
+        boolean inSession = true;
+        while (inSession) {
+            int choice = screen.MainMenu();
+            switch (choice) {
+                case 1 -> System.out.println("not yet\n");
+                case 2 -> System.out.println("not yet\n");
+                case 3 -> System.out.println("not yet\n");
+                default -> System.out.println("Invalid input, try again!!!\n");
+            }
+        }
     }
 
 }
