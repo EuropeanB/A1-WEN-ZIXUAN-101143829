@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+// Test the notification after login
+//  UC-01 5
+
 public class RESP_04_Test {
 
     @Test

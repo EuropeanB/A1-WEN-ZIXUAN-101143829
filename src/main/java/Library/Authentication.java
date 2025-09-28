@@ -10,6 +10,7 @@ public class Authentication {
         this.accounts = accounts;
     }
 
+    // Handing the login process
     public boolean login(String username, String password) {
         for (Borrower borrower : accounts.all()) {
             if (borrower.getUsername().equals(username) && borrower.getPassword().equals(password)) {
@@ -23,4 +24,6 @@ public class Authentication {
     public Borrower getCurrentUser() {
         return currentUser;
     }
+
+
 }

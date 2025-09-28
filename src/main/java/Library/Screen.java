@@ -11,6 +11,7 @@ public class Screen {
         this(System.in);
     }
 
+    // For testing
     public Screen(InputStream in) {
         this.scanner = new Scanner(in);
     }
@@ -35,6 +36,10 @@ public class Screen {
         } else{
             System.out.println("There is no any notification...");
         }
+    }
+
+    public int MainMenu() {
+        return 0;
     }
 
 }

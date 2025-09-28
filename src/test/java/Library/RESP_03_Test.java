@@ -9,7 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 //  User Authentication and credentials validation
-//  UC-01 1,2,3
+//  UC-01 1,2,3,4
 
 public class RESP_03_Test {
 
