@@ -15,7 +15,14 @@ public class Screen {
     }
 
     public String[] screenLogin(){
-        return new String[0];
+
+        System.out.println("Username: ");
+        String username = scanner.nextLine();
+
+        System.out.println("password: ");
+        String password = scanner.nextLine();
+
+        return new String[]{username, password};
     }
 
 

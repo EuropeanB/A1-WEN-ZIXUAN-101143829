@@ -43,6 +43,7 @@ public class RESP_03_Test {
 
         String output = out.toString();
 
+        assertTrue(output.contains("Success!"));
         assertTrue(output.contains("borrower01"));
 
 
