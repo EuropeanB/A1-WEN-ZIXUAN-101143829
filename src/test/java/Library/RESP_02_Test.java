@@ -16,7 +16,7 @@ public class RESP_02_Test {
 
         String[][] expected = {
                 {"borrower01", "123"},
-                {"borrower02",   "456"},
+                {"borrower02", "456"},
                 {"borrower03", "789"}
         };
 
