@@ -20,7 +20,7 @@ public class Borrower {
         return password;
     }
     public int getBorrowedCount(){
-        return -1;
+        return borrowedCount;
     }
 
 }
