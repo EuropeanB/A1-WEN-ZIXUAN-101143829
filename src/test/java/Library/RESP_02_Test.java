@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RESP_02_Test {
 
     @Test
-    @DisplayName("Check the amounts of borrower")
+    @DisplayName("Check the number of borrower")
     void RESP_02_test_01(){
         InitializeAccounts initializeaccounts = new InitializeAccounts();
         Accounts accounts = initializeaccounts.initializeAccounts();
