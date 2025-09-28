@@ -27,5 +27,17 @@ public class RESP_02_Test {
         }
     }
 
+    @Test
+    @DisplayName("Check the borrower's borrowed count")
+    void RESP_02_test_02(){
+        InitializeAccounts initializeaccounts = new InitializeAccounts();
+        Accounts accounts = initializeaccounts.initializeAccounts();
+        for (Borrower borrower : accounts.all()) {
+            assertEquals(0, borrower.getBorrowedCount());
+        }
+
+
+    }
+
 
 }
