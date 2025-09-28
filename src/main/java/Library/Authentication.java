@@ -11,9 +11,9 @@ public class Authentication {
     }
 
     public boolean login(String username, String password) {
-        for (Borrower b : accounts.all()) {
-            if (b.getUsername().equals(username) && b.getPassword().equals(password)) {
-                currentUser = b;
+        for (Borrower borrower : accounts.all()) {
+            if (borrower.getUsername().equals(username) && borrower.getPassword().equals(password)) {
+                currentUser = borrower;
                 return true;
             }
         }

@@ -2,6 +2,7 @@ package Library;
 
 import java.util.Scanner;
 import java.io.InputStream;
+import java.util.List;
 
 public class Screen {
     private final Scanner scanner;
@@ -25,5 +26,8 @@ public class Screen {
         return new String[]{username, password};
     }
 
+    public void loginNotification(List<Book> books){
+        System.out.println("Null");
+    }
 
 }

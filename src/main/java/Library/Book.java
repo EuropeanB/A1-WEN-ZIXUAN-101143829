@@ -40,4 +40,9 @@ public class Book {
     public Optional<LocalDate> getDueDate() {
         return dueDate;
     }
+
+    // setters
+    public void setStatus(Status status){
+        this.status = status;
+    }
 }
