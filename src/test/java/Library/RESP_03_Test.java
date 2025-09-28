@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 //  User Authentication and credentials validation
 //  UC-01 1,2,3
 
@@ -24,6 +28,24 @@ public class RESP_03_Test {
 
         boolean result03 = authentication.login("borrower04","123");
         assertFalse(result03);
+    }
+
+    @Test
+    @DisplayName("Check the login process")
+    void RESP_03_test_02(){
+        String input = "borrower01\n123\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Library.main(new String[]{});
+
+        String output = out.toString();
+
+        assertTrue(output.contains("borrower01"));
+
+
     }
 
 }
