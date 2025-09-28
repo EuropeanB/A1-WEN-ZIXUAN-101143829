@@ -39,7 +39,8 @@ public class RESP_03_Test {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        Library.main(new String[]{});
+        Control control = new Control();
+        control.launch();
 
         String output = out.toString();
 

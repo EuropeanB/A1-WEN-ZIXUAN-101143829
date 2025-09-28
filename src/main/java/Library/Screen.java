@@ -8,11 +8,11 @@ public class Screen {
     private final Scanner scanner;
 
     public Screen() {
-        this(System.in); // 默认用真实输入
+        this(System.in);
     }
 
     public Screen(InputStream in) {
-        this.scanner = new Scanner(in); // 测试时可以换成模拟输入流
+        this.scanner = new Scanner(in);
     }
 
     public String[] screenLogin(){
