@@ -93,7 +93,20 @@ public class Screen {
     }
 
     public int selectBook() {
-        return 0;
+        System.out.println("\nWhich book you would like to borrow? (1-20): ");
+        while (true) {
+            String s = scanner.nextLine().trim();
+            try {
+                int index = Integer.parseInt(s);
+                if (index >= 1 && index <= 20) {
+                    return index - 1;
+                } else {
+                    System.out.println("Invalid range, please enter a number between 1 and 20!");
+                }
+            } catch (NumberFormatException ignored) {
+                System.out.println("Invalid input, try again!");
+            }
+        }
     }
 
 }

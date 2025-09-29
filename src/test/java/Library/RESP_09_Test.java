@@ -15,7 +15,7 @@ public class RESP_09_Test {
     @Test
     @DisplayName("Check the user selection process")
     public void RESP_09_test_01(){
-        String input = "borrower03\n789\n1\n21\nabc\n";
+        String input = "borrower02\n456\n1\n21\nabc\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
         ByteArrayOutputStream captured = new ByteArrayOutputStream();
