@@ -12,6 +12,11 @@ public class Catalogue {
         catalogue = new ArrayList<Book>();
     }
 
+    // Display the books
+    public List<Book> allBooks(){
+        return catalogue;
+    }
+
     // adders
     public void addBook(Book book){
         catalogue.add(book);

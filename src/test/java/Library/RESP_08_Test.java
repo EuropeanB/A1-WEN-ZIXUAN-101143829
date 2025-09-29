@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 
 public class RESP_08_Test {
     @Test
-    @DisplayName("Check the collection display")
+    @DisplayName("Check the collection display and single status")
     void RESP_08_test_01() {
         String input = "borrower03\n789\n1\n";
         InputStream originalIn = System.in;

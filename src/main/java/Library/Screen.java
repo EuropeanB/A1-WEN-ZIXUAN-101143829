@@ -70,7 +70,26 @@ public class Screen {
     }
 
     public void showCatalogue(Catalogue catalogue) {
-        System.out.println("null");
+        System.out.println("\n--------- Library Collection ---------");
+        List<Book> books = catalogue.allBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+
+            String statusText = switch (b.getStatus()) {
+                case Available   -> "Available";
+                case Checked_out -> "Checked Out";
+                case On_hold     -> "On Hold";
+            };
+
+            String dueDate = "";
+            if (b.getStatus() == Book.Status.Checked_out && b.getDueDate().isPresent()) {
+                dueDate = "  (Due: " + b.getDueDate().get().toString() + ")";
+            }
+
+            System.out.printf("%2d: %s — %s  [%s]%s%n",
+                    i + 1, b.getTitle(), b.getAuthor(), statusText, dueDate);
+        }
+        System.out.println("---------------------------------------\n");
     }
 
 }

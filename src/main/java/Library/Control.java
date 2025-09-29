@@ -59,7 +59,6 @@ public class Control {
                 case 1 -> {
                     screen.showCatalogue(catalogue);
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
-
                 }
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
