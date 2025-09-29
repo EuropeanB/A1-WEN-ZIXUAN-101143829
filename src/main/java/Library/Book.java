@@ -43,6 +43,9 @@ public class Book {
 
     // setters
     public void setStatus(Status status){
-        this.status = status;
+
+    }
+    public void setDueDate(LocalDate date){
+
     }
 }
