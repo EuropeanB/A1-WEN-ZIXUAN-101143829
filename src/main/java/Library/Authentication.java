@@ -26,7 +26,7 @@ public class Authentication {
     }
 
     public void logout(){
-
+        currentUser = null;
     }
 
 }
