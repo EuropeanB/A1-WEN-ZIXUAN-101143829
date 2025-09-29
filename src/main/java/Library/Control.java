@@ -5,7 +5,7 @@ import java.util.List;
 public class Control {
     private Accounts accounts;
     private Authentication authentication;
-    //private Catalogue catalogue;
+    private Catalogue catalogue;
     private holdList holdList;
     private Screen screen;
 
@@ -19,7 +19,7 @@ public class Control {
     private void init() {
         accounts       = new InitializeAccounts().initializeAccounts();
         authentication = new Authentication(accounts);
-        //catalogue = new InitializeLibrary().initializeLibrary();
+        catalogue = new InitializeLibrary().initializeLibrary();
         holdList       = new holdList();
         screen         = new Screen(System.in);
     }
@@ -56,7 +56,11 @@ public class Control {
         while (inSession) {
             int choice = screen.MainMenu();
             switch (choice) {
-                case 1 -> screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
+                case 1 -> {
+                    screen.showCatalogue(catalogue);
+                    screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
+
+                }
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
                     if(screen.confirmLogout()){

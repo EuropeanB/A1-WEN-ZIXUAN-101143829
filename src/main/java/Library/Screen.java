@@ -69,4 +69,8 @@ public class Screen {
         System.out.println("You already borrowed " + count + "/3 books!");
     }
 
+    public void showCatalogue(Catalogue catalogue) {
+        System.out.println("null");
+    }
+
 }
