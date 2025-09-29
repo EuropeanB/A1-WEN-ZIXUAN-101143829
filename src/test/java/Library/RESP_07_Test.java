@@ -15,7 +15,7 @@ public class RESP_07_Test {
     @Test
     @DisplayName("Check the borrowed count display")
     void RESP_07_test_01(){
-        String input = "borrower01\n123\n1\n";
+        String input = "borrower03\n789\n1\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
         ByteArrayOutputStream captured = new ByteArrayOutputStream();

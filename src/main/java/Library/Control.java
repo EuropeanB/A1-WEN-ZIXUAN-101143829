@@ -56,7 +56,7 @@ public class Control {
         while (inSession) {
             int choice = screen.MainMenu();
             switch (choice) {
-                case 1 -> System.out.println("not yet\n");
+                case 1 -> screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
                     if(screen.confirmLogout()){

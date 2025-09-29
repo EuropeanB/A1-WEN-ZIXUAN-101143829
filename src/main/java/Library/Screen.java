@@ -16,6 +16,7 @@ public class Screen {
         this.scanner = new Scanner(in);
     }
 
+    // login screen
     public String[] screenLogin(){
 
         System.out.println("Username: ");
@@ -27,6 +28,7 @@ public class Screen {
         return new String[]{username, password};
     }
 
+    // The notification after login
     public void loginNotification(List<Book> books){
         if(!books.isEmpty()){
             System.out.println("The books returned and you can borrow right now!");
@@ -38,6 +40,7 @@ public class Screen {
         }
     }
 
+    //  Main menu display
     public int MainMenu() {
         System.out.println("\nPlease select：");
         System.out.println("1. Borrow");
@@ -54,10 +57,16 @@ public class Screen {
         }
     }
 
+    // To confirm if user want to logout
     public boolean confirmLogout() {
         System.out.print("Are you sure you want to logout? (y/n): ");
         String confirm = scanner.nextLine().trim().toLowerCase();
         return confirm.equals("y");
+    }
+
+    // Display the borrowed count
+    public void showBorrowedCount(int count){
+        System.out.println("You already borrowed " + count + "/3 books!");
     }
 
 }
