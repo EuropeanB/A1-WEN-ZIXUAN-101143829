@@ -43,9 +43,12 @@ public class Book {
 
     // setters
     public void setStatus(Status status){
-
+        this.status = status;
+        if (status != Status.Checked_out) {
+            dueDate = Optional.empty();
+        }
     }
     public void setDueDate(LocalDate date){
-
+        this.dueDate = Optional.ofNullable(date);
     }
 }

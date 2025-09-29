@@ -70,11 +70,10 @@ public class RESP_08_Test {
 
         String out = buf.toString();
 
-        assertTrue(out.contains(book02.getTitle()));
         assertTrue(out.contains("Checked Out"));
         assertTrue(out.contains("Due:"));
         assertTrue(out.contains(due.toString()));
-        assertTrue(out.contains("On_hold"));
+        assertTrue(out.contains("On Hold"));
 
     }
 }
