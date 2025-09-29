@@ -36,7 +36,6 @@ public class RESP_05_Test {
             System.setOut(originalOut);
         }
 
-
         String output = captured.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
