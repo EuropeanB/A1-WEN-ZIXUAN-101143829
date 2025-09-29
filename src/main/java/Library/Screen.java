@@ -92,4 +92,8 @@ public class Screen {
         System.out.println("---------------------------------------\n");
     }
 
+    public int selectBook() {
+        return 0;
+    }
+
 }

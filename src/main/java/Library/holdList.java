@@ -15,6 +15,7 @@ public class holdList {
 
     }
 
+    // Check if books is available
     public List<Book> bookAvailable(Borrower borrower){
         List<Book> result = new ArrayList<>();
         for(Map.Entry<Book, Queue<Borrower>> entry: holds.entrySet()){

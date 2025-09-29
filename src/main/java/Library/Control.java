@@ -59,6 +59,7 @@ public class Control {
                 case 1 -> {
                     screen.showCatalogue(catalogue);
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
+                    screen.selectBook();
                 }
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
@@ -76,6 +77,7 @@ public class Control {
         }
     }
 
+    // clear the text in console
     private void clearConsole(){
         for (int i = 0; i < 50; i++){
             System.out.println();
