@@ -10,6 +10,9 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
+// Check the user sekection process
+// UC-02: 3
+
 public class RESP_09_Test {
 
     @Test

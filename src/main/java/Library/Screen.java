@@ -69,29 +69,31 @@ public class Screen {
         System.out.println("You already borrowed " + count + "/3 books!");
     }
 
+    // Display the all books
     public void showCatalogue(Catalogue catalogue) {
         System.out.println("\n--------- Library Collection ---------");
         List<Book> books = catalogue.allBooks();
         for (int i = 0; i < books.size(); i++) {
-            Book b = books.get(i);
+            Book book = books.get(i);
 
-            String statusText = switch (b.getStatus()) {
+            String statusText = switch (book.getStatus()) {
                 case Available   -> "Available";
                 case Checked_out -> "Checked Out";
                 case On_hold     -> "On Hold";
             };
 
             String dueDate = "";
-            if (b.getStatus() == Book.Status.Checked_out && b.getDueDate().isPresent()) {
-                dueDate = "  (Due: " + b.getDueDate().get().toString() + ")";
+            if (book.getStatus() == Book.Status.Checked_out && book.getDueDate().isPresent()) {
+                dueDate = "  (Due: " + book.getDueDateText() + ")";
             }
 
             System.out.printf("%2d: %s — %s  [%s]%s%n",
-                    i + 1, b.getTitle(), b.getAuthor(), statusText, dueDate);
+                    i + 1, book.getTitle(), book.getAuthor(), statusText, dueDate);
         }
         System.out.println("---------------------------------------\n");
     }
 
+    // Select book during borrowing
     public int selectBook() {
         System.out.println("\nWhich book you would like to borrow? (1-20): ");
         while (true) {
@@ -107,6 +109,11 @@ public class Screen {
                 System.out.println("Invalid input, try again!");
             }
         }
+    }
+
+    public boolean confirmBorrow(Book book){
+        return true;
+
     }
 
 }

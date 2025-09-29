@@ -10,15 +10,11 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
-// Check the borrowed count display
-// UC-02: 1
-
-public class RESP_07_Test {
-
+public class RESP_10_Test {
     @Test
-    @DisplayName("Check the borrowed count display")
-    void RESP_07_test_01(){
-        String input = "borrower03\n789\n1\n";
+    @DisplayName("Check single book information display")
+    public void RESP_10_test_01(){
+        String input = "borrower02\n456\n1\n20\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
         ByteArrayOutputStream captured = new ByteArrayOutputStream();
@@ -41,6 +37,7 @@ public class RESP_07_Test {
         System.out.println(output);
         System.out.println("---------------------------------");
 
-        assertTrue(output.contains("You already borrowed 0/3 books!"));
+        assertTrue(output.contains("Book Information"));
     }
+
 }

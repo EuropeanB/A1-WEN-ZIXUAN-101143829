@@ -22,11 +22,6 @@ public class Book {
         this.author = author;
     }
 
-    // Output the due date
-    public String getDueDateText(){
-        return dueDate.map(LocalDate::toString).orElse("-");
-    }
-
     // getters
     public String getTitle(){
         return title;
@@ -39,6 +34,10 @@ public class Book {
     }
     public Optional<LocalDate> getDueDate() {
         return dueDate;
+    }
+    // Output the due date
+    public String getDueDateText(){
+        return dueDate.map(LocalDate::toString).orElse("-");
     }
 
     // setters

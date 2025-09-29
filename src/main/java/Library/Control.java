@@ -59,7 +59,9 @@ public class Control {
                 case 1 -> {
                     screen.showCatalogue(catalogue);
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
-                    screen.selectBook();
+                    int bookIndex = screen.selectBook();
+                    Book chosenBook = catalogue.getBook(bookIndex);
+                    screen.confirmBorrow(chosenBook);
                 }
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
