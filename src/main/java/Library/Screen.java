@@ -112,6 +112,12 @@ public class Screen {
     }
 
     public boolean confirmBorrow(Book book){
+        System.out.println("---------- Book Information ----------");
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("Status: " + book.getStatus());
+        System.out.println("DueDate: " + book.getDueDateText());
+        System.out.println("---------------- END -----------------");
         return true;
 
     }
