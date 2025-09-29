@@ -54,4 +54,10 @@ public class Screen {
         }
     }
 
+    public boolean confirmLogout() {
+        System.out.print("Are you sure you want to logout? (y/n): ");
+        String confirm = scanner.nextLine().trim().toLowerCase();
+        return confirm.equals("y");
+    }
+
 }

@@ -58,9 +58,24 @@ public class Control {
             switch (choice) {
                 case 1 -> System.out.println("not yet\n");
                 case 2 -> System.out.println("not yet\n");
-                case 3 -> System.out.println("not yet\n");
+                case 3 -> {
+                    if(screen.confirmLogout()){
+                        authentication.logout();
+                        //clearConsole();
+                        System.out.println("logged out");
+                        inSession = false;
+                    } else {
+                        System.out.println("logout cancelled");
+                    }
+                }
                 default -> System.out.println("Invalid input, try again!!!\n");
             }
+        }
+    }
+
+    private void clearConsole(){
+        for (int i = 0; i < 50; i++){
+            System.out.println();
         }
     }
 
