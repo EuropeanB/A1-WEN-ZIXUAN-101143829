@@ -18,7 +18,7 @@ public class RESP_05_Test {
     @Test
     @DisplayName("Check the main menu")
     void RESP_05_test_01() {
-        String input = "borrower01\n123\n\n";
+        String input = "borrower01\n123\n3\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
         ByteArrayOutputStream captured = new ByteArrayOutputStream();
@@ -45,6 +45,7 @@ public class RESP_05_Test {
         assertTrue(output.contains("Login Success!"));
         assertTrue(output.contains("Please select"));
         assertTrue(output.contains("borrower01"));
+        assertTrue(output.toLowerCase().contains("not yet"));
     }
 }
 

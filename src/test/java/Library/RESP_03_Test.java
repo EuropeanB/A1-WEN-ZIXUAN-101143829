@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.NoSuchElementException;
 
 //  User Authentication and credentials validation
 //  UC-01 1,2,3,4
@@ -33,18 +35,31 @@ public class RESP_03_Test {
     @Test
     @DisplayName("Check the login process")
     void RESP_03_test_02(){
-        String input = "borrower01\n123\n";
+        String input = "borrower01\n123\n\n";
+        InputStream originalIn = System.in;
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream captured = new ByteArrayOutputStream();
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setOut(new PrintStream(captured));
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        try {
+            try {
+                new Control().launch();
+            } catch (NoSuchElementException eof) {
+                // Do nothing
+            }
+        } finally {
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
 
-        Control control = new Control();
-        control.launch();
+        String output = captured.toString();
+        System.out.println("------------ Output -------------");
+        System.out.println(output);
+        System.out.println("---------------------------------");
 
-        String output = out.toString();
-
-        assertTrue(output.contains("Success!"));
+        assertTrue(output.contains("Login Success!"));
+        assertTrue(output.contains("Please select"));
         assertTrue(output.contains("borrower01"));
 
 
