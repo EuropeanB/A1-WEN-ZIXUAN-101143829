@@ -70,17 +70,24 @@ public class Screen {
     }
 
     // Display the all books
-    public void showCatalogue(Catalogue catalogue) {
+    public void showCatalogue(Catalogue catalogue,Borrower currentUser, holdList holds) {
         System.out.println("\n--------- Library Collection ---------");
         List<Book> books = catalogue.allBooks();
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
 
-            String statusText = switch (book.getStatus()) {
-                case Available   -> "Available";
-                case Checked_out -> "Checked Out";
-                case On_hold     -> "On Hold";
-            };
+            String statusText = "";
+            switch (book.getStatus()) {
+                case Available -> statusText = "Available";
+                case Checked_out -> statusText = "Checked Out";
+                case On_hold -> {
+                    if (!holds.isOnHold(book, currentUser)) {
+                        statusText = "Available";
+                    } else {
+                        statusText = "On Hold";
+                    }
+                }
+            }
 
             String dueDate = "";
             if (book.getStatus() == Book.Status.Checked_out && book.getDueDate().isPresent()) {

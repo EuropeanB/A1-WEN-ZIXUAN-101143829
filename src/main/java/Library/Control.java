@@ -57,7 +57,7 @@ public class Control {
             int choice = screen.MainMenu();
             switch (choice) {
                 case 1 -> {
-                    screen.showCatalogue(catalogue);
+                    screen.showCatalogue(catalogue,authentication.getCurrentUser(),holdList);
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
                     borrowBook(authentication.getCurrentUser());
                 }
@@ -77,7 +77,7 @@ public class Control {
         }
     }
 
-    private void borrowBook(Borrower borrower){
+    public void borrowBook(Borrower borrower){
         int bookIndex = screen.selectBook();
         Book book = catalogue.getBook(bookIndex);
 
@@ -86,11 +86,7 @@ public class Control {
             return;
         }
 
-        if(book.getStatus() != Book.Status.Available){
-            System.out.println("You can't borrow this book!");
-            System.out.println("Reason: This book has borrowed!");
-            return;
-        }
+
 
         System.out.println("You borrowed this book!");
     }

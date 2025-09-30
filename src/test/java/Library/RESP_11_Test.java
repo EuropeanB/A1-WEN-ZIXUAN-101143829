@@ -30,11 +30,10 @@ public class RESP_11_Test {
     }
 
     @Test
-    @DisplayName("Check the system checking during borrowing")
+    @DisplayName("Check if book is unavailable")
     public void RESP_11_test_01(){
         book01.setStatus(Book.Status.Checked_out);
         assertEquals(Book.Status.Checked_out, book01.getStatus());
-
     }
 
 }

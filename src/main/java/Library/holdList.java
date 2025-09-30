@@ -32,4 +32,17 @@ public class holdList {
         return result;
     }
 
+    public boolean isOnHold(Book book, Borrower borrower) {
+        Queue<Borrower> queue = holds.get(book);
+        if (queue == null || queue.isEmpty()) {
+            return false;
+        }
+        Borrower first = queue.peek();
+
+        if (first.equals(borrower)) {
+            return false;
+        }
+        return true;
+    }
+
 }

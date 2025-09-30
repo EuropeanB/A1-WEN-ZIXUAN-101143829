@@ -49,6 +49,8 @@ public class RESP_08_Test {
     @DisplayName("Check the various statuses and due date")
     public void RESP_08_test_02(){
         Catalogue catalogue = new InitializeLibrary().initializeLibrary();
+        Accounts accounts = new InitializeAccounts().initializeAccounts();
+        holdList holds = new holdList();
 
         Book book01 = catalogue.getBook(0);
         book01.setStatus(Book.Status.Checked_out);
@@ -58,13 +60,17 @@ public class RESP_08_Test {
         Book book02 = catalogue.getBook(1);
         book02.setStatus(Book.Status.On_hold);
 
+        holds.placeHold(accounts.all().get(1),book02);
+        Borrower borrower01 = accounts.all().get(0);
+
         PrintStream out0 = System.out;
         ByteArrayOutputStream buf = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buf));
 
         try {
             Screen screen = new Screen(new ByteArrayInputStream(new byte[0]));
-            screen.showCatalogue(catalogue);
+            screen.showCatalogue(catalogue,borrower01, holds);
+
         } finally {
             System.setOut(out0);
         }
