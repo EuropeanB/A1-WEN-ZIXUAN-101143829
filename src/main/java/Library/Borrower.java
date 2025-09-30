@@ -26,10 +26,10 @@ public class Borrower {
     // setters
     //setters
     public void increaseBorrowedCount(){
-
+        borrowedCount += 1;
     }
     public void decreaseBorrowedCount(){
-
+        borrowedCount -=1;
     }
 
 }

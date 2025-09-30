@@ -98,6 +98,11 @@ public class Control {
             return;
         }
 
+        if(borrower.getBorrowedCount() >= 3){
+            System.out.println("You can't borrow this book!");
+            System.out.println("Reason: You already borrowed 3 books! ");
+        }
+
         System.out.println("You borrowed this book!");
     }
 
