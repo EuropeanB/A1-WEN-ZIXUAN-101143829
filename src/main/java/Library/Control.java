@@ -86,6 +86,12 @@ public class Control {
             return;
         }
 
+        if(book.getStatus() != Book.Status.Available){
+            System.out.println("You can't borrow this book!");
+            System.out.println("Reason: This book has borrowed!");
+            return;
+        }
+
         System.out.println("You borrowed this book!");
     }
 
