@@ -36,4 +36,12 @@ public class RESP_11_Test {
         assertEquals(Book.Status.Checked_out, book01.getStatus());
     }
 
+    @Test
+    @DisplayName("Check if book is on hold")
+    public void RESP_11_test_02(){
+        book01.setStatus(Book.Status.Available);
+        holds.placeHold(borrower02,book01);
+        assertTrue(holds.isOnHold(book01, borrower01));
+    }
+
 }
