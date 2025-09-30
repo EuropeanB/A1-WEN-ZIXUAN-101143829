@@ -12,6 +12,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+// Check the book display and user interaction
+
 public class RESP_10_Test {
     private InputStream originalIn;
     private PrintStream originalOut;
@@ -56,6 +58,29 @@ public class RESP_10_Test {
         System.out.println("---------------------------------");
 
         assertTrue(output.contains("Book Information"));
+    }
+
+    @Test
+    @DisplayName("Check the user interaction before system checking")
+    public void RESP_10_test_02() {
+        String input = "borrower02\n456\n1\n20\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        try {
+            new Control().launch();
+        } catch (Exception ignored) {
+
+        } finally{
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        String output = capturedOut.toString();
+        System.out.println("------------ Output -------------");
+        System.out.println(output);
+        System.out.println("---------------------------------");
+
+        assertTrue(output.contains("You borrowed this book!"));
     }
 
 }
