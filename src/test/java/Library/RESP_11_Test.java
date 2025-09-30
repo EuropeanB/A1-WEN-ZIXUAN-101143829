@@ -44,4 +44,13 @@ public class RESP_11_Test {
         assertTrue(holds.isOnHold(book01, borrower01));
     }
 
+    @Test
+    @DisplayName("Check if book is on hold")
+    public void RESP_11_test_03(){
+        borrower01.increaseBorrowedCount();
+        borrower01.increaseBorrowedCount();
+        borrower01.increaseBorrowedCount();
+        assertTrue(borrower01.getBorrowedCount() == 3);
+    }
+
 }

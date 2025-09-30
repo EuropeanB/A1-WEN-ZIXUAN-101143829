@@ -23,4 +23,13 @@ public class Borrower {
         return borrowedCount;
     }
 
+    // setters
+    //setters
+    public void increaseBorrowedCount(){
+
+    }
+    public void decreaseBorrowedCount(){
+
+    }
+
 }
