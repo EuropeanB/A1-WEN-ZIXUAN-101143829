@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 // Check the book display and user interaction
+// UC-02 4-5
 
 public class RESP_10_Test {
     private InputStream originalIn;
@@ -21,18 +22,15 @@ public class RESP_10_Test {
 
     @BeforeEach
     void setUp() {
-        // 备份原始输入输出
         originalIn = System.in;
         originalOut = System.out;
 
-        // 准备捕获输出
         capturedOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(capturedOut));
     }
 
     @AfterEach
     void tearDown() {
-        // 恢复原始输入输出
         System.setIn(originalIn);
         System.setOut(originalOut);
     }
@@ -63,7 +61,7 @@ public class RESP_10_Test {
     @Test
     @DisplayName("Check the user interaction before system checking")
     public void RESP_10_test_02() {
-        String input = "borrower02\n456\n1\n20\n";
+        String input = "borrower02\n456\n1\n20\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         try {

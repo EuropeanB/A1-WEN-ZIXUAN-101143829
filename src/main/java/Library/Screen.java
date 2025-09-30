@@ -118,7 +118,9 @@ public class Screen {
         System.out.println("Status: " + book.getStatus());
         System.out.println("DueDate: " + book.getDueDateText());
         System.out.println("---------------- END -----------------");
-        return false;
+        System.out.println("You want to borrow this book? y/n: ");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
     }
 
 }

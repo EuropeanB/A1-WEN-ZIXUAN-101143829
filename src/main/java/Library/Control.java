@@ -82,9 +82,11 @@ public class Control {
         Book book = catalogue.getBook(bookIndex);
 
         if(!screen.confirmBorrow(book)){
-
+            System.out.println("borrowing cancelled");
+            return;
         }
 
+        System.out.println("You borrowed this book!");
     }
 
     // clear the text in console
