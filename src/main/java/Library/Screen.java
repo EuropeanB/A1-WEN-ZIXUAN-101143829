@@ -118,8 +118,7 @@ public class Screen {
         System.out.println("Status: " + book.getStatus());
         System.out.println("DueDate: " + book.getDueDateText());
         System.out.println("---------------- END -----------------");
-        return true;
-
+        return false;
     }
 
 }

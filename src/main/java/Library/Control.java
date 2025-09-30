@@ -59,9 +59,7 @@ public class Control {
                 case 1 -> {
                     screen.showCatalogue(catalogue);
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
-                    int bookIndex = screen.selectBook();
-                    Book chosenBook = catalogue.getBook(bookIndex);
-                    screen.confirmBorrow(chosenBook);
+                    borrowBook(authentication.getCurrentUser());
                 }
                 case 2 -> System.out.println("not yet\n");
                 case 3 -> {
@@ -77,6 +75,16 @@ public class Control {
                 default -> System.out.println("Invalid input, try again!!!\n");
             }
         }
+    }
+
+    private void borrowBook(Borrower borrower){
+        int bookIndex = screen.selectBook();
+        Book book = catalogue.getBook(bookIndex);
+
+        if(!screen.confirmBorrow(book)){
+
+        }
+
     }
 
     // clear the text in console
