@@ -140,7 +140,9 @@ public class Screen {
         System.out.println("Author: " + book.getAuthor());
         System.out.println("DueDate: " + expectedDue);
         System.out.println("---------------- END -----------------");
-        return false;
+        System.out.println("Confirm this booking? y/n: ");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
     }
 
 }

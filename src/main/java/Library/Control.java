@@ -106,7 +106,7 @@ public class Control {
 
         //System.out.println("You borrowed this book!");
         if(screen.borrowConfirm(book)){
-
+            System.out.println("You borrowed this book!");
         } else {
             System.out.println("borrowing cancelled!");
             return;
