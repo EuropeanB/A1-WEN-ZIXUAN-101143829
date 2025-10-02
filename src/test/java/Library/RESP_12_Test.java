@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
+// Check the date calculation
+// UC-02: 8
+
 public class RESP_12_Test {
 
     @Test

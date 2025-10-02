@@ -1,5 +1,6 @@
 package Library;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.io.InputStream;
 import java.util.List;
@@ -118,16 +119,20 @@ public class Screen {
         }
     }
 
-    public boolean confirmBorrow(Book book){
+    public boolean borrowChecking(Book book){
         System.out.println("---------- Book Information ----------");
         System.out.println("Title: " + book.getTitle());
         System.out.println("Author: " + book.getAuthor());
         System.out.println("Status: " + book.getStatus());
-        System.out.println("DueDate: " + book.getDueDateText());
+        //System.out.println("DueDate: " + book.getDueDateText());
         System.out.println("---------------- END -----------------");
         System.out.println("You want to borrow this book? y/n: ");
         String choice = scanner.nextLine().trim().toLowerCase();
         return choice.equals("y");
+    }
+
+    public boolean borrowConfirm(Book book){
+        return false;
     }
 
 }

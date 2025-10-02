@@ -12,10 +12,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-// Check the book display and user interaction
-// UC-02 4-5
+// Check the last borrow checking
+// UC-02: 11-13
 
-public class RESP_10_Test {
+public class RESP_13_Test {
     private InputStream originalIn;
     private PrintStream originalOut;
     private ByteArrayOutputStream capturedOut;
@@ -36,31 +36,8 @@ public class RESP_10_Test {
     }
 
     @Test
-    @DisplayName("Check single book information display")
-    public void RESP_10_test_01() {
-        String input = "borrower02\n456\n1\n20\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-
-        try {
-            new Control().launch();
-        } catch (Exception ignored) {
-
-        } finally{
-            System.setIn(originalIn);
-            System.setOut(originalOut);
-        }
-
-        String output = capturedOut.toString();
-        System.out.println("------------ Output -------------");
-        System.out.println(output);
-        System.out.println("---------------------------------");
-
-        assertTrue(output.contains("Book Information"));
-    }
-
-    @Test
-    @DisplayName("Check the user interaction before system checking")
-    public void RESP_10_test_02() {
+    @DisplayName("Check the borrowConfirm output")
+    public void RESP_13_test_01(){
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
@@ -78,7 +55,10 @@ public class RESP_10_Test {
         System.out.println(output);
         System.out.println("---------------------------------");
 
-        assertTrue(output.contains("You want to borrow this book?"));
+        assertTrue(output.contains("Confirm this booking?"));
+        assertTrue(output.contains("dueDate: "));
     }
+
+
 
 }

@@ -81,7 +81,7 @@ public class Control {
         int bookIndex = screen.selectBook();
         Book book = catalogue.getBook(bookIndex);
 
-        if(!screen.confirmBorrow(book)){
+        if(!screen.borrowChecking(book)){
             System.out.println("borrowing cancelled");
             return;
         }
@@ -104,8 +104,14 @@ public class Control {
             return;
         }
 
+        //System.out.println("You borrowed this book!");
+        if(screen.borrowConfirm(book)){
 
-        System.out.println("You borrowed this book!");
+        } else {
+            System.out.println("borrowing cancelled!");
+            return;
+        }
+
     }
 
     // clear the text in console
