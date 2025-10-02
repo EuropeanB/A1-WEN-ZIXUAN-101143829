@@ -58,6 +58,30 @@ public class RESP_13_Test {
         assertTrue(output.contains("DueDate: "));
     }
 
+    @Test
+    @DisplayName("Check the borrowConfirm output")
+    public void RESP_13_test_02(){
+        String input = "borrower02\n456\n1\n20\ny\ny\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        try {
+            new Control().launch();
+        } catch (Exception ignored) {
+
+        } finally{
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        String output = capturedOut.toString();
+        System.out.println("------------ Output -------------");
+        System.out.println(output);
+        System.out.println("---------------------------------");
+
+        assertTrue(output.contains("Confirm this booking?"));
+        assertTrue(output.contains("You borrowed this book!"));
+    }
+
 
 
 }
