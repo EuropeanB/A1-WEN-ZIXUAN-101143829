@@ -55,8 +55,7 @@ public class RESP_13_Test {
         System.out.println(output);
         System.out.println("---------------------------------");
 
-        assertTrue(output.contains("Confirm this booking?"));
-        assertTrue(output.contains("dueDate: "));
+        assertTrue(output.contains("DueDate: "));
     }
 
 

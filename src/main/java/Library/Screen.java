@@ -132,6 +132,14 @@ public class Screen {
     }
 
     public boolean borrowConfirm(Book book){
+        LocalDate today = LocalDate.now();
+        LocalDate expectedDue = today.plusDays(14);
+
+        System.out.println("---------- Book Information ----------");
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("DueDate: " + expectedDue);
+        System.out.println("---------------- END -----------------");
         return false;
     }
 
