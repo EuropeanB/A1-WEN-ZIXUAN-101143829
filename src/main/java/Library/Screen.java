@@ -147,7 +147,9 @@ public class Screen {
     }
 
     public boolean bookBooking(Book book) {
-        return false;
+        System.out.println("Would you like to place a hold for this book? (y/n): ");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
     }
 
 }

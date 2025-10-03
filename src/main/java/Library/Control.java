@@ -90,18 +90,42 @@ public class Control {
         if(book.getStatus() == Book.Status.Checked_out){
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book has borrowed!");
+
+            if (screen.bookBooking(book)) {
+                holdList.placeHold(borrower, book);
+                System.out.println("Hold placed successfully! You will be notified when it becomes available.");
+            } else {
+                System.out.println("No hold placed.");
+            }
+
             return;
         }
 
         if (book.getStatus() == Book.Status.On_hold && holdList.isOnHold(book, borrower)) {
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book is on hold!");
+
+            if (screen.bookBooking(book)) {
+                holdList.placeHold(borrower, book);
+                System.out.println("Hold placed successfully! You will be notified when it becomes available.");
+            } else {
+                System.out.println("No hold placed.");
+            }
+
             return;
         }
 
         if(borrower.getBorrowedCount() >= 3){
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: You already borrowed 3 books! ");
+
+            if (screen.bookBooking(book)) {
+                holdList.placeHold(borrower, book);
+                System.out.println("Hold placed successfully! You will be notified when it becomes available.");
+            } else {
+                System.out.println("No hold placed.");
+            }
+
             return;
         }
 
