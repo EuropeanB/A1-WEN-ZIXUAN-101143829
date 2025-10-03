@@ -196,7 +196,13 @@ public class Screen {
     }
 
     public boolean confirmReturn(Book book) {
-        return false;
+        System.out.println("---------- Return Confirmation ----------");
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("-----------------------------------------");
+        System.out.println("Do you really want to return this book? (y/n): ");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
     }
 
 }

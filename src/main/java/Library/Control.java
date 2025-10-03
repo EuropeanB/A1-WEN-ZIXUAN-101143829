@@ -172,6 +172,15 @@ public class Control {
     // Handling the return book process
     public void returnBook(Borrower borrower){
         screen.showBorrowedBooks(borrower);
+        int bookIndex = screen.selectBorrowedBook(borrower);
+        Recording record = borrower.getRecords().get(bookIndex);
+        Book book = record.getBook();
+
+        if (screen.confirmReturn(book)) {
+            System.out.println("You returned a book!");
+        } else {
+            System.out.println("Return cancelled!");
+        }
     }
 
     // Unused
