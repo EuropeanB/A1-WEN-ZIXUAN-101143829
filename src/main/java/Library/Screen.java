@@ -175,4 +175,8 @@ public class Screen {
         System.out.println("---------------------------------------\n");
     }
 
+    public int selectBorrowedBook(Borrower borrower){
+        return 0;
+    }
+
 }
