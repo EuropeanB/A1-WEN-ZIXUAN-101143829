@@ -175,6 +175,7 @@ public class Screen {
         System.out.println("---------------------------------------\n");
     }
 
+    // Select the borrowed book to return
     public int selectBorrowedBook(Borrower borrower){
         return 0;
     }
