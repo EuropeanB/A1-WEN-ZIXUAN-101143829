@@ -110,6 +110,10 @@ public class Control {
             LocalDate due = LocalDate.now().plusDays(14);
             borrower.addRecord(new Recording(book,due));
 
+            book.setStatus(Book.Status.Checked_out);
+            book.setDueDate(due);
+            borrower.increaseBorrowedCount();
+
             System.out.println("You borrowed this book!");
         } else {
             System.out.println("borrowing cancelled!");
