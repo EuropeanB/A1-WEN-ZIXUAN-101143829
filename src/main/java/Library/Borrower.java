@@ -43,7 +43,8 @@ public class Borrower {
         records.add(record);
     }
     public void removeRecord(Book book) {
-
+        records.removeIf(r -> r.getBook().equals(book));
+        decreaseBorrowedCount();
     }
 
 }

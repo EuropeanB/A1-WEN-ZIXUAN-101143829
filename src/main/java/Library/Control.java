@@ -177,6 +177,9 @@ public class Control {
         Book book = record.getBook();
 
         if (screen.confirmReturn(book)) {
+            book.setStatus(Book.Status.Available);
+            book.setDueDate(null);
+            borrower.removeRecord(book);
             System.out.println("You returned a book!");
         } else {
             System.out.println("Return cancelled!");
