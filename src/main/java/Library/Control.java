@@ -98,6 +98,10 @@ public class Control {
                         return;
                     }
                 }
+                if (holdList.hasReserved(book, borrower)) {
+                    System.out.println("You have already reserved this book!");
+                    return;
+                }
                 holdList.placeHold(borrower, book);
                 System.out.println("Hold placed successfully! You will be notified when it becomes available.");
             } else {
@@ -112,6 +116,10 @@ public class Control {
             System.out.println("Reason: This book is on hold!");
 
             if (screen.bookBooking(book)) {
+                if (holdList.hasReserved(book, borrower)) {
+                    System.out.println("You have already reserved this book!");
+                    return;
+                }
                 holdList.placeHold(borrower, book);
                 System.out.println("Hold placed successfully! You will be notified when it becomes available.");
             } else {
@@ -126,6 +134,10 @@ public class Control {
             System.out.println("Reason: You already borrowed 3 books! ");
 
             if (screen.bookBooking(book)) {
+                if (holdList.hasReserved(book, borrower)) {
+                    System.out.println("You have already reserved this book!");
+                    return;
+                }
                 holdList.placeHold(borrower, book);
                 System.out.println("Hold placed successfully! You will be notified when it becomes available.");
             } else {

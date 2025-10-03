@@ -48,7 +48,9 @@ public class holdList {
     }
 
     public boolean hasReserved(Book book, Borrower borrower) {
-        return false;
+        Queue<Borrower> queue = holds.get(book);
+        if (queue == null) return false;
+        return queue.contains(borrower);
     }
 
 }
