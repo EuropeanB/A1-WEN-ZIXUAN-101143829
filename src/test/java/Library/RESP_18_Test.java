@@ -59,4 +59,28 @@ public class RESP_18_Test {
 
     }
 
+    @Test
+    @DisplayName("Check the return book menu")
+    public void RESP_18_test_02(){
+        String input = "borrower02\n456\n1\n20\ny\ny\n2\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        try {
+            new Control().launch();
+        } catch (Exception ignored) {
+
+        } finally{
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        String output = capturedOut.toString();
+        System.out.println("------------ Output -------------");
+        System.out.println(output);
+        System.out.println("---------------------------------");
+
+        assertTrue(output.contains("Borrowed Books"));
+
+    }
+
 }
