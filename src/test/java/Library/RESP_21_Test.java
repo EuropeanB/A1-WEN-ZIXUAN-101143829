@@ -12,13 +12,15 @@ import java.time.LocalDate;
 public class RESP_21_Test {
 
     @Test
-    @DisplayName("Return book and reservation status becomes On_hold")
+    @DisplayName("UC-03-3:Return book and reservation status becomes On_hold")
     public void RESP_21_test_01() {
 
+        // Initialization
         Borrower borrower1 = new Borrower("borrower01", "123");
         Borrower borrower2 = new Borrower("borrower02", "456");
         Book book = new Book("Book01", "Author01");
 
+        // Checking before testing
         LocalDate dueDate = LocalDate.now().plusDays(14);
         book.setStatus(Book.Status.Checked_out);
         book.setDueDate(dueDate);
@@ -38,6 +40,7 @@ public class RESP_21_Test {
             borrower1.removeRecord(book);
         }
 
+        // On hold checking
         assertEquals(Book.Status.On_hold, book.getStatus());
         assertTrue(book.getDueDate().isEmpty());
         assertTrue(borrower1.getRecords().isEmpty());
