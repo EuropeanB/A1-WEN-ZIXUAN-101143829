@@ -155,11 +155,11 @@ public class Screen {
     }
 
     // Display the return books
-    public void showBorrowedBooks(Borrower borrower) {
+    public boolean showBorrowedBooks(Borrower borrower) {
         List<Recording> records = borrower.getRecords();
         if (records.isEmpty()) {
             System.out.println("You have no borrowed books!");
-            return;
+            return false;
         }
 
         // Display
@@ -173,6 +173,7 @@ public class Screen {
                     i + 1, book.getTitle(), book.getAuthor(), dueDate);
         }
         System.out.println("---------------------------------------\n");
+        return true;
     }
 
     // Select the borrowed book to return

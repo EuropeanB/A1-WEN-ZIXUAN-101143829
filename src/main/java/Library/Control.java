@@ -171,7 +171,9 @@ public class Control {
 
     // Handling the return book process
     public void returnBook(Borrower borrower){
-        screen.showBorrowedBooks(borrower);
+        if (!screen.showBorrowedBooks(borrower)) {
+            return;
+        }
         int bookIndex = screen.selectBorrowedBook(borrower);
         Recording record = borrower.getRecords().get(bookIndex);
         Book book = record.getBook();
