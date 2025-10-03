@@ -115,7 +115,9 @@ public class Control {
         }
 
         // If the status is on hold and user is not the first person in the queue
-        if (book.getStatus() == Book.Status.On_hold && holdList.isOnHold(book, borrower)) {
+        // Or already took 3 books before
+        if ((book.getStatus() == Book.Status.On_hold && holdList.isOnHold(book, borrower))
+            || borrower.getBorrowedCount() >= 3) {
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book is on hold!");
 
@@ -133,26 +135,7 @@ public class Control {
             return;
         }
 
-        // If user borrowed 3 books before
-        if(borrower.getBorrowedCount() >= 3){
-            System.out.println("You can't borrow this book!");
-            System.out.println("Reason: You already borrowed 3 books! ");
-
-            if (screen.bookBooking(book)) {
-                if (holdList.hasReserved(book, borrower)) {
-                    System.out.println("You have already reserved this book!");
-                    return;
-                }
-                holdList.placeHold(borrower, book);
-                System.out.println("Hold placed successfully! You will be notified when it becomes available.");
-            } else {
-                System.out.println("No hold placed.");
-            }
-
-            return;
-        }
-
-        //System.out.println("You borrowed this book!");
+        // Last confirmation and updating
         if(screen.borrowConfirm(book)){
             LocalDate due = LocalDate.now().plusDays(14);
             borrower.addRecord(new Recording(book,due));
