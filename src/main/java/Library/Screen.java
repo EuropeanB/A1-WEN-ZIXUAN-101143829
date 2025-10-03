@@ -161,6 +161,18 @@ public class Screen {
             System.out.println("You have no borrowed books!");
             return;
         }
+
+        // Display
+        System.out.println("\n--------- Borrowed Books ---------");
+        for (int i = 0; i < records.size(); i++) {
+            Recording r = records.get(i);
+            Book book = r.getBook();
+            String dueDate = r.getDueDate().toString();
+
+            System.out.printf("%2d: %s — %s  (Due: %s)%n",
+                    i + 1, book.getTitle(), book.getAuthor(), dueDate);
+        }
+        System.out.println("---------------------------------------\n");
     }
 
 }
