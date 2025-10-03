@@ -146,4 +146,8 @@ public class Screen {
         return choice.equals("y");
     }
 
+    public boolean bookBooking(Book book) {
+        return false;
+    }
+
 }

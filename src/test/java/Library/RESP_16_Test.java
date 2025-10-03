@@ -12,10 +12,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-// Check System updating on account and book status
-// UC-02 10
+// Check the book booking process
+// UC-06.1/4/5/6
 
-public class RESP_15_Test {
+public class RESP_16_Test {
     private InputStream originalIn;
     private PrintStream originalOut;
     private ByteArrayOutputStream capturedOut;
@@ -37,8 +37,8 @@ public class RESP_15_Test {
 
     @Test
     @DisplayName("Check System updating on account and book status")
-    public void RESP_15_test_01() {
-        String input = "borrower02\n456\n1\n20\ny\ny\n1\n";
+    public void RESP_16_test_01() {
+        String input = "borrower02\n456\n1\n20\ny\ny\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         try {
@@ -55,6 +55,7 @@ public class RESP_15_Test {
         System.out.println(output);
         System.out.println("---------------------------------");
 
-        assertTrue(output.contains("You already borrowed 1/3 books!"));
+        assertTrue(output.contains("Hold placed successfully! You will be notified when it becomes available."));
     }
+
 }
