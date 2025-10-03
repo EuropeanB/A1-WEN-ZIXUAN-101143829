@@ -53,7 +53,8 @@ public class holdList {
 
     // Check if any borrower reserved this book before
     public boolean checkReservation(Book book){
-        return false;
+        Queue<Borrower> queue = holds.get(book);
+        return queue != null && !queue.isEmpty();
     }
 
 }
