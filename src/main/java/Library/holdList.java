@@ -16,7 +16,7 @@ public class holdList {
 
     }
 
-    // Check if books is available
+    // Check if books is available for reserver before login
     public List<Book> bookAvailable(Borrower borrower){
         List<Book> result = new ArrayList<>();
         for(Map.Entry<Book, Queue<Borrower>> entry: holds.entrySet()){
@@ -36,9 +36,6 @@ public class holdList {
     // Check if borrower is still on hold
     public boolean isOnHold(Book book, Borrower borrower) {
         Queue<Borrower> queue = holds.get(book);
-        if (queue == null || queue.isEmpty()) {
-            return false;
-        }
         Borrower first = queue.peek();
 
         if (first.equals(borrower)) {
@@ -47,11 +44,16 @@ public class holdList {
         return true;
     }
 
-    // Check if borrower borrowed this book before
+    // Check if borrower reserved this book before
     public boolean hasReserved(Book book, Borrower borrower) {
         Queue<Borrower> queue = holds.get(book);
         if (queue == null) return false;
         return queue.contains(borrower);
+    }
+
+    // Check if any borrower reserved this book before
+    public boolean checkReservation(Book book){
+        return false;
     }
 
 }
