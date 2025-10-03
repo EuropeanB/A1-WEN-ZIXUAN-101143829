@@ -119,6 +119,7 @@ public class Screen {
         }
     }
 
+    // Last borrowing confirmation
     public boolean borrowChecking(Book book){
         System.out.println("---------- Book Information ----------");
         System.out.println("Title: " + book.getTitle());
@@ -140,7 +141,7 @@ public class Screen {
         System.out.println("Author: " + book.getAuthor());
         System.out.println("DueDate: " + expectedDue);
         System.out.println("---------------- END -----------------");
-        System.out.println("Confirm this booking? y/n: ");
+        System.out.println("Confirm this borrowing? y/n: ");
         String choice = scanner.nextLine().trim().toLowerCase();
         return choice.equals("y");
     }

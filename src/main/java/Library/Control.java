@@ -1,6 +1,7 @@
 package Library;
 
 import java.util.List;
+import java.time.LocalDate;
 
 public class Control {
     private Accounts accounts;
@@ -106,6 +107,9 @@ public class Control {
 
         //System.out.println("You borrowed this book!");
         if(screen.borrowConfirm(book)){
+            LocalDate due = LocalDate.now().plusDays(14);
+            borrower.addRecord(new Recording(book,due));
+
             System.out.println("You borrowed this book!");
         } else {
             System.out.println("borrowing cancelled!");

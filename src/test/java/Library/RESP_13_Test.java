@@ -36,7 +36,7 @@ public class RESP_13_Test {
     }
 
     @Test
-    @DisplayName("Check the borrowConfirm output")
+    @DisplayName("Check the detail output before last confirmation")
     public void RESP_13_test_01(){
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -59,7 +59,7 @@ public class RESP_13_Test {
     }
 
     @Test
-    @DisplayName("Check the borrowConfirm output")
+    @DisplayName("Check the last confirmation output")
     public void RESP_13_test_02(){
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -78,7 +78,7 @@ public class RESP_13_Test {
         System.out.println(output);
         System.out.println("---------------------------------");
 
-        assertTrue(output.contains("Confirm this booking?"));
+        assertTrue(output.contains("Confirm this borrowing?"));
         assertTrue(output.contains("You borrowed this book!"));
     }
 
