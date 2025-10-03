@@ -169,8 +169,9 @@ public class Control {
 
     }
 
+    // Handling the return book process
     public void returnBook(Borrower borrower){
-
+        screen.showBorrowedBooks(borrower);
     }
 
     // Unused

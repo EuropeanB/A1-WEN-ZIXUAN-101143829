@@ -154,4 +154,13 @@ public class Screen {
         return choice.equals("y");
     }
 
+    // Display the return books
+    public void showBorrowedBooks(Borrower borrower) {
+        List<Recording> records = borrower.getRecords();
+        if (records.isEmpty()) {
+            System.out.println("You have no borrowed books!");
+            return;
+        }
+    }
+
 }
