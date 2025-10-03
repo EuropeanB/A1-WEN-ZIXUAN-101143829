@@ -132,6 +132,7 @@ public class Screen {
         return choice.equals("y");
     }
 
+    // The last confirmation in borrowing
     public boolean borrowConfirm(Book book){
         LocalDate today = LocalDate.now();
         LocalDate expectedDue = today.plusDays(14);
@@ -146,6 +147,7 @@ public class Screen {
         return choice.equals("y");
     }
 
+    // Book reservation
     public boolean bookBooking(Book book) {
         System.out.println("Would you like to place a hold for this book? (y/n): ");
         String choice = scanner.nextLine().trim().toLowerCase();

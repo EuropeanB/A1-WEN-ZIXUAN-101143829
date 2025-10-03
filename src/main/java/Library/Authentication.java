@@ -21,10 +21,12 @@ public class Authentication {
         return false;
     }
 
+    // getters
     public Borrower getCurrentUser() {
         return currentUser;
     }
 
+    // logout
     public void logout(){
         currentUser = null;
     }

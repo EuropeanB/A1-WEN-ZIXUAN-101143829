@@ -47,6 +47,7 @@ public class holdList {
         return true;
     }
 
+    // Check if borrower borrowed this book before
     public boolean hasReserved(Book book, Borrower borrower) {
         Queue<Borrower> queue = holds.get(book);
         if (queue == null) return false;

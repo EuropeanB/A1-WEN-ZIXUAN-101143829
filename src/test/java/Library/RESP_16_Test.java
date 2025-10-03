@@ -36,9 +36,10 @@ public class RESP_16_Test {
     }
 
     @Test
-    @DisplayName("Check System updating on account and book status")
+    @DisplayName("Check the book reservation process")
     public void RESP_16_test_01() {
-        String input = "borrower02\n456\n1\n20\ny\ny\n1\n20\ny\ny\n";
+        String input = "borrower02\n456\n1\n20\ny\ny\n3\ny\n" +
+                "borrower03\n789\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         try {

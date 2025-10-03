@@ -45,7 +45,7 @@ public class RESP_11_Test {
     }
 
     @Test
-    @DisplayName("Check if book is on hold")
+    @DisplayName("Check the correct borrowed count")
     public void RESP_11_test_03(){
         borrower01.increaseBorrowedCount();
         borrower01.increaseBorrowedCount();

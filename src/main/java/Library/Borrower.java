@@ -38,6 +38,7 @@ public class Borrower {
         borrowedCount -=1;
     }
 
+    // handling the system recording
     public void addRecord(Recording record) {
         records.add(record);
     }

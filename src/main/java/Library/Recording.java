@@ -6,6 +6,7 @@ public class Recording {
     private final Book book;
     private final LocalDate dueDate;
 
+    // Initialization
     public Recording(Book book, LocalDate dueDate){
         this.book = book;
         this.dueDate = dueDate;

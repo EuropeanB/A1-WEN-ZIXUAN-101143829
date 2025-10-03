@@ -10,6 +10,7 @@ public class Book {
     private final String title;
     private final String author;
 
+    // Book status
     public enum Status { Available, Checked_out, On_hold }
     private Status status = Status.Available;
 
@@ -35,6 +36,7 @@ public class Book {
     public Optional<LocalDate> getDueDate() {
         return dueDate;
     }
+
     // Output the due date
     public String getDueDateText(){
         return dueDate.map(LocalDate::toString).orElse("-");

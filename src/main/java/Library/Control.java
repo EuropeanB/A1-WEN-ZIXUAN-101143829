@@ -78,15 +78,18 @@ public class Control {
         }
     }
 
+    // borrowing process
     public void borrowBook(Borrower borrower){
         int bookIndex = screen.selectBook();
         Book book = catalogue.getBook(bookIndex);
 
+        // Cancelled manually
         if(!screen.borrowChecking(book)){
             System.out.println("borrowing cancelled");
             return;
         }
 
+        // If the status is check_out
         if(book.getStatus() == Book.Status.Checked_out){
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book has borrowed!");
@@ -111,6 +114,7 @@ public class Control {
             return;
         }
 
+        // If the status is on hold and user is not the first person in the queue
         if (book.getStatus() == Book.Status.On_hold && holdList.isOnHold(book, borrower)) {
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book is on hold!");
@@ -129,6 +133,7 @@ public class Control {
             return;
         }
 
+        // If user borrowed 3 books before
         if(borrower.getBorrowedCount() >= 3){
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: You already borrowed 3 books! ");
@@ -164,6 +169,7 @@ public class Control {
 
     }
 
+    // Unused
     // clear the text in console
     private void clearConsole(){
         for (int i = 0; i < 50; i++){
