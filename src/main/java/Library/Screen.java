@@ -177,7 +177,22 @@ public class Screen {
 
     // Select the borrowed book to return
     public int selectBorrowedBook(Borrower borrower){
-        return 0;
+        List<Recording> records = borrower.getRecords();
+        System.out.println("Which book would you like to return? (1-" + records.size() + "): ");
+        while (true) {
+            String s = scanner.nextLine().trim();
+            try {
+                int index = Integer.parseInt(s);
+                if (index >= 1 && index <= records.size()) {
+                    return index - 1;
+                } else {
+                    System.out.println("Invalid range, please enter a number between 1 and " + records.size() + "!");
+                }
+            } catch (NumberFormatException ignored) {
+                System.out.println("Invalid input, try again!");
+            }
+        }
+
     }
 
 }
