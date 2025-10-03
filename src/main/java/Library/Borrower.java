@@ -42,5 +42,8 @@ public class Borrower {
     public void addRecord(Recording record) {
         records.add(record);
     }
+    public void removeRecord(Book book) {
+
+    }
 
 }

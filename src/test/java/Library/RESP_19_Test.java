@@ -8,7 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
 
 // Check the return book selection amd confirmation
-// UC-03: 2,5,6
+// UC-03: 2,5,6,7
 
 public class RESP_19_Test {
 
