@@ -195,4 +195,8 @@ public class Screen {
 
     }
 
+    public boolean confirmReturn(Book book) {
+        return false;
+    }
+
 }
