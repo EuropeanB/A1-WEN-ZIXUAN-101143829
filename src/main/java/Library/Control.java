@@ -92,6 +92,12 @@ public class Control {
             System.out.println("Reason: This book has borrowed!");
 
             if (screen.bookBooking(book)) {
+                for (Recording r : borrower.getRecords()) {
+                    if (r.getBook().equals(book)) {
+                        System.out.println("You already borrowed this book!");
+                        return;
+                    }
+                }
                 holdList.placeHold(borrower, book);
                 System.out.println("Hold placed successfully! You will be notified when it becomes available.");
             } else {
