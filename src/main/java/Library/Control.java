@@ -62,7 +62,7 @@ public class Control {
                     screen.showBorrowedCount(authentication.getCurrentUser().getBorrowedCount());
                     borrowBook(authentication.getCurrentUser());
                 }
-                case 2 -> System.out.println("not yet\n");
+                case 2 -> returnBook(authentication.getCurrentUser());
                 case 3 -> {
                     if(screen.confirmLogout()){
                         authentication.logout();
@@ -166,6 +166,10 @@ public class Control {
             System.out.println("borrowing cancelled!");
             return;
         }
+
+    }
+
+    public void returnBook(Borrower borrower){
 
     }
 
