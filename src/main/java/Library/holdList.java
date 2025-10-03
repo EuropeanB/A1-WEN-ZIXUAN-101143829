@@ -5,6 +5,7 @@ import java.util.*;
 public class holdList {
     private final Map<Book, Queue<Borrower>> holds = new HashMap<>();
 
+    // Place a hold on single book's holding list
     public void placeHold(Borrower borrower, Book book){
         Queue<Borrower> queue = holds.get(book);
         if (queue == null){
@@ -32,6 +33,7 @@ public class holdList {
         return result;
     }
 
+    // Check if borrower is still on hold
     public boolean isOnHold(Book book, Borrower borrower) {
         Queue<Borrower> queue = holds.get(book);
         if (queue == null || queue.isEmpty()) {
@@ -43,6 +45,10 @@ public class holdList {
             return false;
         }
         return true;
+    }
+
+    public boolean hasReserved(Book book, Borrower borrower) {
+        return false;
     }
 
 }
