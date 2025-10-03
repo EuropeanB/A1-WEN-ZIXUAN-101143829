@@ -39,7 +39,7 @@ public class Borrower {
     }
 
     public void addRecord(Recording record) {
-
+        records.add(record);
     }
 
 }

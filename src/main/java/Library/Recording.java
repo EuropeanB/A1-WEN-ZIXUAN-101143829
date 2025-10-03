@@ -13,10 +13,10 @@ public class Recording {
 
     // getters
     public Book getBook(){
-        return null;
+        return book;
     }
     public LocalDate getDueDate(){
-        return null;
+        return dueDate;
     }
 
 }
