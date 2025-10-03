@@ -58,4 +58,28 @@ public class RESP_17_Test {
 
         assertTrue(output.contains("You already borrowed this book!"));
     }
+
+    @Test
+    @DisplayName("Check the book booking failed because borrower already reserved this book")
+    public void RESP_17_test_02() {
+        String input = "borrower02\n456\n1\n20\ny\ny\n3\ny\n" +
+                       "borrower03\n789\n1\n20\ny\ny\n1\n20\ny\ny";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        try {
+            new Control().launch();
+        } catch (Exception ignored) {
+
+        } finally{
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        String output = capturedOut.toString();
+        System.out.println("------------ Output -------------");
+        System.out.println(output);
+        System.out.println("---------------------------------");
+
+        assertTrue(output.contains("You have already reserved this book!"));
+    }
 }
