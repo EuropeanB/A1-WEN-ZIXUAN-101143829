@@ -16,8 +16,9 @@ import java.util.NoSuchElementException;
 public class RESP_07_Test {
 
     @Test
-    @DisplayName("Check the borrowed count display")
+    @DisplayName("UC-02-1: Check the borrowed count display")
     void RESP_07_test_01(){
+        // Input for testing
         String input = "borrower03\n789\n1\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
@@ -36,11 +37,13 @@ public class RESP_07_Test {
             System.setOut(originalOut);
         }
 
+        // output
         String output = captured.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
         System.out.println("---------------------------------");
 
+        // Test
         assertTrue(output.contains("You already borrowed 0/3 books!"));
     }
 }

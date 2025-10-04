@@ -4,83 +4,55 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
+import java.time.LocalDate;
 
-// Check the return book menu
+// Check the return book menu and failed condition
 // UC-03: 1/1.1
 
 public class RESP_18_Test {
-    private InputStream originalIn;
-    private PrintStream originalOut;
-    private ByteArrayOutputStream capturedOut;
 
-    @BeforeEach
-    void setUp() {
-        originalIn = System.in;
-        originalOut = System.out;
-
-        capturedOut = new ByteArrayOutputStream();
+    @Test
+    @DisplayName("UC-03-1.1: Check if there's no borrowed book when user want to return book")
+    public void RESP_18_test_01() {
+        // Output
+        ByteArrayOutputStream capturedOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(capturedOut));
-    }
 
-    @AfterEach
-    void tearDown() {
-        System.setIn(originalIn);
-        System.setOut(originalOut);
-    }
+        // Initialization
+        Borrower borrower = new Borrower("borrower01", "123");
+        Screen screen = new Screen(System.in);
 
-    @Test
-    @DisplayName("Check if there's no borrowed book when user want to return book")
-    public void RESP_18_test_01(){
-        String input = "borrower02\n456\n2\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        screen.showBorrowedBooks(borrower);
 
-        try {
-            new Control().launch();
-        } catch (Exception ignored) {
-
-        } finally{
-            System.setIn(originalIn);
-            System.setOut(originalOut);
-        }
-
+        // Test the no borrowed book condition
         String output = capturedOut.toString();
-        System.out.println("------------ Output -------------");
-        System.out.println(output);
-        System.out.println("---------------------------------");
-
         assertTrue(output.contains("You have no borrowed books!"));
-
     }
 
     @Test
-    @DisplayName("Check the return book menu")
-    public void RESP_18_test_02(){
-        String input = "borrower02\n456\n1\n20\ny\ny\n2\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+    @DisplayName("UC-03-1: Check the return book menu")
+    public void RESP_18_test_02() {
+        //  Output
+        ByteArrayOutputStream capturedOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(capturedOut));
 
-        try {
-            new Control().launch();
-        } catch (Exception ignored) {
+        // Initialization
+        Borrower borrower = new Borrower("borrower01", "123");
+        Book book = new Book("Book01", "Author01");
+        LocalDate dueDate = LocalDate.now().plusDays(7);
+        borrower.addRecord(new Recording(book, dueDate));
 
-        } finally{
-            System.setIn(originalIn);
-            System.setOut(originalOut);
-        }
+        Screen screen = new Screen(System.in);
 
+        screen.showBorrowedBooks(borrower);
+
+        // Test the return book menu Display
         String output = capturedOut.toString();
-        System.out.println("------------ Output -------------");
-        System.out.println(output);
-        System.out.println("---------------------------------");
-
         assertTrue(output.contains("Borrowed Books"));
-
+        assertTrue(output.contains("Book01"));
+        assertTrue(output.contains("Author01"));
+        assertTrue(output.contains(dueDate.toString()));
     }
-
 }

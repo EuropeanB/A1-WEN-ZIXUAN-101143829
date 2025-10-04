@@ -17,8 +17,9 @@ import java.time.LocalDate;
 
 public class RESP_08_Test {
     @Test
-    @DisplayName("Check the collection display and single status")
+    @DisplayName("UC-02-2.2: Check the collection display and single status")
     void RESP_08_test_01() {
+        // Input for testing
         String input = "borrower03\n789\n1\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
@@ -46,8 +47,9 @@ public class RESP_08_Test {
     }
 
     @Test
-    @DisplayName("Check the various statuses and due date")
+    @DisplayName("UC-02-2.3: Check the various statuses and due date")
     public void RESP_08_test_02(){
+        // Initialization
         Catalogue catalogue = new InitializeLibrary().initializeLibrary();
         Accounts accounts = new InitializeAccounts().initializeAccounts();
         holdList holds = new holdList();
@@ -75,8 +77,10 @@ public class RESP_08_Test {
             System.setOut(out0);
         }
 
+        // output
         String out = buf.toString();
 
+        // Test
         assertTrue(out.contains("Checked Out"));
         assertTrue(out.contains("Due:"));
         assertTrue(out.contains(due.toString()));

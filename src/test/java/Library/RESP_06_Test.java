@@ -11,17 +11,20 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
 // Logout process
-// UC-04 1-3
+// UC-04: 1-3
 
 public class RESP_06_Test {
 
     @Test
-    @DisplayName("Check if current user session cleared")
+    @DisplayName("UC-04-1/2/3: Check if current user session cleared")
     void RESP_06_test_01(){
+        // Initialization
         Accounts accounts = new InitializeAccounts().initializeAccounts();
         Authentication auth = new Authentication(accounts);
 
         Borrower borrower = accounts.all().get(0);
+
+        // Test
         assertTrue(auth.login(borrower.getUsername(), borrower.getPassword()));
         assertNotNull(auth.getCurrentUser());
 
@@ -33,6 +36,7 @@ public class RESP_06_Test {
     @Test
     @DisplayName("Check ")
     void RESP_06_test_02(){
+        // Input for testing
         String input = "borrower01\n123\n3\ny\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
@@ -51,11 +55,13 @@ public class RESP_06_Test {
             System.setOut(originalOut);
         }
 
+        // Output
         String output = captured.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
         System.out.println("---------------------------------");
 
+        // Test
         assertTrue(output.contains("logged out"));
 
     }

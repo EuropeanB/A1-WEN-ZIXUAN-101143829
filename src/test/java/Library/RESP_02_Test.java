@@ -12,6 +12,7 @@ public class RESP_02_Test {
     @Test
     @DisplayName("Check the number of borrower")
     void RESP_02_test_01(){
+        // Initialization
         InitializeAccounts initializeaccounts = new InitializeAccounts();
         Accounts accounts = initializeaccounts.initializeAccounts();
 
@@ -33,6 +34,7 @@ public class RESP_02_Test {
     @Test
     @DisplayName("Check the borrower's borrowed count")
     void RESP_02_test_02(){
+        // Initialization
         InitializeAccounts initializeaccounts = new InitializeAccounts();
         Accounts accounts = initializeaccounts.initializeAccounts();
         for (Borrower borrower : accounts.all()) {

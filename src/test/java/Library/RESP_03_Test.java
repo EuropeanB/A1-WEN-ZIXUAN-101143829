@@ -11,14 +11,15 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
 //  User Authentication and credentials validation
-//  UC-01 1,2,3,4
+//  UC-01: 1,2,3,4
 
 public class RESP_03_Test {
 
     @Test
-    @DisplayName("Check the login system")
+    @DisplayName("UC-01-1/2: Check the login system")
     void RESP_03_test_01(){
 
+        // Initialization
         Accounts accounts = new InitializeAccounts().initializeAccounts();
         Authentication authentication = new Authentication(accounts);
 
@@ -33,8 +34,9 @@ public class RESP_03_Test {
     }
 
     @Test
-    @DisplayName("Check the login process")
+    @DisplayName("UC-01-3/4: Check the login process")
     void RESP_03_test_02(){
+        // Input for testing
         String input = "borrower01\n123\n\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;

@@ -36,7 +36,7 @@ public class RESP_10_Test {
     }
 
     @Test
-    @DisplayName("Check single book information display")
+    @DisplayName("UC-02-4: Check single book information display")
     public void RESP_10_test_01() {
         String input = "borrower02\n456\n1\n20\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -59,7 +59,7 @@ public class RESP_10_Test {
     }
 
     @Test
-    @DisplayName("Check the user interaction before system checking")
+    @DisplayName("UC-02-5: Check the user interaction before system checking")
     public void RESP_10_test_02() {
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));

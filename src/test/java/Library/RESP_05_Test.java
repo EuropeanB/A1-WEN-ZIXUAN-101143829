@@ -11,13 +11,14 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
 // Test the Main menu
-// UC-01 6
+// UC-01: 6
 
 public class RESP_05_Test {
 
     @Test
-    @DisplayName("Check the main menu")
+    @DisplayName("UC-01-6: Check the main menu")
     void RESP_05_test_01() {
+        // Input for testing
         String input = "borrower01\n123\n3\n";
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
@@ -36,11 +37,13 @@ public class RESP_05_Test {
             System.setOut(originalOut);
         }
 
+        // Output
         String output = captured.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
         System.out.println("---------------------------------");
 
+        // Test
         assertTrue(output.contains("Login Success!"));
         assertTrue(output.contains("Please select"));
         assertTrue(output.contains("borrower01"));

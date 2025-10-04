@@ -12,6 +12,7 @@ public class RESP_01_Test {
     @Test
     @DisplayName("Check library catalogue size is 20")
     void RESP_01_test_01(){
+        // Initialization
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 
@@ -23,6 +24,7 @@ public class RESP_01_Test {
     @Test
     @DisplayName("Check the first book title in catalogue")
     void RESP_01_test_02(){
+        // Initialization
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 
@@ -35,6 +37,7 @@ public class RESP_01_Test {
     @Test
     @DisplayName("Check the first book Author in catalogue")
     void RESP_01_test_03(){
+        // Initialization
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 
@@ -47,6 +50,7 @@ public class RESP_01_Test {
     @Test
     @DisplayName("Check the books' Status")
     void RESP_01_test_04(){
+        // Initialization
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 
@@ -58,6 +62,7 @@ public class RESP_01_Test {
     @Test
     @DisplayName("Check the books' due date")
     void RESP_01_test_05(){
+        // Initialization
         InitializeLibrary library = new InitializeLibrary();
         Catalogue catalogue = library.initializeLibrary();
 

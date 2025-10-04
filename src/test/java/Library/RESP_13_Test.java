@@ -36,8 +36,9 @@ public class RESP_13_Test {
     }
 
     @Test
-    @DisplayName("Check the detail output before last confirmation")
+    @DisplayName("UC-02-11: Check the detail output before last confirmation")
     public void RESP_13_test_01(){
+        // Input for testing
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
@@ -50,17 +51,20 @@ public class RESP_13_Test {
             System.setOut(originalOut);
         }
 
+        // Output
         String output = capturedOut.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
         System.out.println("---------------------------------");
 
+        // Test the detail output
         assertTrue(output.contains("DueDate: "));
     }
 
     @Test
-    @DisplayName("Check the last confirmation output")
+    @DisplayName("UC-02-12/13: Check the last confirmation output")
     public void RESP_13_test_02(){
+        // Input for testing
         String input = "borrower02\n456\n1\n20\ny\ny\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
@@ -73,11 +77,13 @@ public class RESP_13_Test {
             System.setOut(originalOut);
         }
 
+        // Output
         String output = capturedOut.toString();
         System.out.println("------------ Output -------------");
         System.out.println(output);
         System.out.println("---------------------------------");
 
+        // Test the last confirmation
         assertTrue(output.contains("Confirm this borrowing?"));
         assertTrue(output.contains("You borrowed this book!"));
     }

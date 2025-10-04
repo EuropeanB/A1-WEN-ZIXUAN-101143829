@@ -8,20 +8,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 // Test the notification after login
-//  UC-01 5
+//  UC-01: 5
 
 public class RESP_04_Test {
 
     @Test
-    @DisplayName("Check the notification after login")
+    @DisplayName("UC-01-5: Check the notification after login")
     void RESP_04_test_01(){
+        // Initialization
         Accounts accounts = new InitializeAccounts().initializeAccounts();
         Borrower borrower = accounts.all().get(0);
-
 
         Catalogue catalogue = new InitializeLibrary().initializeLibrary();
         Book book = catalogue.getBook(0);
 
+        // Test
         book.setStatus(Book.Status.Checked_out);
         assertEquals(Book.Status.Checked_out, book.getStatus());
 
@@ -37,6 +38,7 @@ public class RESP_04_Test {
         Screen screen = new Screen();
         screen.loginNotification(holds.bookAvailable(borrower));
 
+        // Test
         String output = out.toString();
         assertTrue(output.contains("The books returned and you can borrow right now!"));
         assertTrue(output.contains(book.getTitle()));

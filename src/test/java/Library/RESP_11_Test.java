@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 
-// Check the system checking during borrowing
+// Check the system checking in borrowing
 // UC-02: 5-7
 
 public class RESP_11_Test {
@@ -30,14 +30,14 @@ public class RESP_11_Test {
     }
 
     @Test
-    @DisplayName("Check if book is unavailable")
+    @DisplayName("UC-02-6: Check if book is unavailable")
     public void RESP_11_test_01(){
         book01.setStatus(Book.Status.Checked_out);
         assertEquals(Book.Status.Checked_out, book01.getStatus());
     }
 
     @Test
-    @DisplayName("Check if book is on hold")
+    @DisplayName("UC-02-6: Check if book is on hold")
     public void RESP_11_test_02(){
         book01.setStatus(Book.Status.Available);
         holds.placeHold(borrower02,book01);
@@ -45,7 +45,7 @@ public class RESP_11_Test {
     }
 
     @Test
-    @DisplayName("Check the correct borrowed count")
+    @DisplayName("UC-02-7: Check the correct borrowed count")
     public void RESP_11_test_03(){
         borrower01.increaseBorrowedCount();
         borrower01.increaseBorrowedCount();

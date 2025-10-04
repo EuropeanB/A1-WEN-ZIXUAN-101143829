@@ -12,8 +12,9 @@ import java.time.LocalDate;
 public class RESP_12_Test {
 
     @Test
-    @DisplayName("Check the date calculation")
+    @DisplayName("UC-02-8: Check the date calculation")
     void RESP_12_test_01(){
+        // Initialization
         Catalogue catalogue = new InitializeLibrary().initializeLibrary();
         Accounts accounts = new InitializeAccounts().initializeAccounts();
         Authentication auth = new Authentication(accounts);
@@ -28,6 +29,7 @@ public class RESP_12_Test {
         book01.setDueDate(expectedDue);
         borrower01.increaseBorrowedCount();
 
+        // Check if due date setting is correct
         assertEquals(Book.Status.Checked_out, book01.getStatus());
         assertTrue(book01.getDueDate().isPresent());
         assertEquals(today.plusDays(14), book01.getDueDate().get());
