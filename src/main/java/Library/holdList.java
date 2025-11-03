@@ -23,7 +23,7 @@ public class holdList {
             Book book = entry.getKey();
             Queue<Borrower> queue = entry.getValue();
 
-            if(book.getStatus() == Book.Status.Available &&
+            if(book.getStatus() == Book.Status.On_hold &&
                     queue != null &&
                     !queue.isEmpty() &&
                     queue.peek().equals(borrower)){
