@@ -24,4 +24,14 @@ public class Accounts {
         return list;
     }
 
+    // Find the specific borrower username
+    public Borrower getUser(String username) {
+        for (Borrower b : list) {
+            if (b.getUsername().equals(username)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
 }

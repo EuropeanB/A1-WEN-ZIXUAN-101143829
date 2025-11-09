@@ -57,4 +57,17 @@ public class holdList {
         return queue != null && !queue.isEmpty();
     }
 
+    // Remove the user's hold on specific book's queue
+    public void removeHold(Book book, Borrower borrower){
+        Queue<Borrower> queue = holds.get(book);
+        if (queue != null && !queue.isEmpty()) {
+            queue.remove(borrower);
+        }
+    }
+
+    // Get the specific books' queue
+    public Queue<Borrower> getQueue(Book book) {
+        return holds.getOrDefault(book, new ArrayDeque<>());
+    }
+
 }

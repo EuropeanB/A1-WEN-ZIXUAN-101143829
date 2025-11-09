@@ -25,6 +25,15 @@ public class Control {
         screen         = new Screen(System.in);
     }
 
+    // For testing
+    public void simulateControl(Accounts accounts, Authentication authentication, Catalogue catalogue, holdList holdList) {
+        this.accounts = accounts;
+        this.authentication = authentication;
+        this.catalogue = catalogue;
+        this.holdList = holdList;
+        this.screen = new Screen(System.in);
+    }
+
     // Main function
     private void run() {
         while (true) {
@@ -79,18 +88,18 @@ public class Control {
     }
 
     // borrowing process
-    public void borrowBook(Borrower borrower){
+    public void borrowBook(Borrower borrower) {
         int bookIndex = screen.selectBook();
         Book book = catalogue.getBook(bookIndex);
 
         // Cancelled manually
-        if(!screen.borrowChecking(book)){
+        if (!screen.borrowChecking(book)) {
             System.out.println("borrowing cancelled");
             return;
         }
 
         // If the status is check_out
-        if(book.getStatus() == Book.Status.Checked_out){
+        if (book.getStatus() == Book.Status.Checked_out) {
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book has borrowed!");
 
@@ -117,7 +126,7 @@ public class Control {
         // If the status is on hold and user is not the first person in the queue
         // Or already took 3 books before
         if ((book.getStatus() == Book.Status.On_hold && holdList.isOnHold(book, borrower))
-            || borrower.getBorrowedCount() >= 3) {
+                || borrower.getBorrowedCount() >= 3) {
             System.out.println("You can't borrow this book!");
             System.out.println("Reason: This book is on hold!");
 
@@ -136,20 +145,23 @@ public class Control {
         }
 
         // Last confirmation and updating
-        if(screen.borrowConfirm(book)){
-            LocalDate due = LocalDate.now().plusDays(14);
-            borrower.addRecord(new Recording(book,due));
-
-            book.setStatus(Book.Status.Checked_out);
-            book.setDueDate(due);
-            borrower.increaseBorrowedCount();
-
+        if (screen.borrowConfirm(book)) {
+            processBorrow(borrower, book);
             System.out.println("You borrowed this book!");
         } else {
             System.out.println("borrowing cancelled!");
             return;
         }
 
+    }
+
+    public void processBorrow(Borrower borrower, Book book){
+        LocalDate due = LocalDate.now().plusDays(14);
+        borrower.addRecord(new Recording(book, due));
+        holdList.removeHold(book, borrower);
+        book.setStatus(Book.Status.Checked_out);
+        book.setDueDate(due);
+        borrower.increaseBorrowedCount();
     }
 
     // Handling the return book process
@@ -162,17 +174,21 @@ public class Control {
         Book book = record.getBook();
 
         if (screen.confirmReturn(book)) {
-            if (holdList.checkReservation(book)){
-                book.setStatus(Book.Status.On_hold);
-            } else{
-                book.setStatus(Book.Status.Available);
-            }
-            book.setDueDate(null);
-            borrower.removeRecord(book);
+            processReturn(borrower, book);
             System.out.println("You returned a book!");
         } else {
             System.out.println("Return cancelled!");
         }
+    }
+
+    public void processReturn(Borrower borrower, Book book){
+        if (holdList.checkReservation(book)){
+            book.setStatus(Book.Status.On_hold);
+        } else{
+            book.setStatus(Book.Status.Available);
+        }
+        book.setDueDate(null);
+        borrower.removeRecord(book);
     }
 
     // Unused

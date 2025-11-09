@@ -29,5 +29,13 @@ public class Catalogue {
     public Book getBook(int index){
         return catalogue.get(index);
     }
+    public Book getBook(String title) {
+        for (Book b : catalogue) {
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                return b;
+            }
+        }
+        return null;
+    }
 
 }
