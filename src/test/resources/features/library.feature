@@ -18,8 +18,9 @@ Feature: Library Book Borrowing
     When user "<otherUser>" logs out
     And user "<user>" logs in
     And user "<user>" returns book "<bookTitle>"
-    And user "<user>" has 0 book that need to return
-    And user "<user>" logs out
+    Then user "<user>" has 0 book that need to return
+
+    When user "<user>" logs out
     And user "<otherUser>" logs in
     Then user "<otherUser>" can borrow the book "<bookTitle>" and borrowed it
     And user "<otherUser>" has 1 book that need to return
@@ -53,7 +54,9 @@ Feature: Library Book Borrowing
     When user "<user3>" logs out
     And user "<user1>" logs in
     And user "<user1>" returns book "<bookTitle>"
-    And user "<user1>" logs out
+    Then user "<user1>" has 0 book that need to return
+
+    When user "<user1>" logs out
     And user "<user3>" logs in
     Then user "<user3>" should not be notified
     And user "<user3>" cannot borrow the book "<bookTitle>"
@@ -70,11 +73,13 @@ Feature: Library Book Borrowing
     # Notifications are sent to the correct user when book becomes available
     # Queue advances properly when reserved books are borrowed or returned
     When user "<user2>" returns book "<bookTitle>"
-    And user "<user2>" logs out
+    Then user "<user2>" has 0 book that need to return
+
+    When user "<user2>" logs out
     And user "<user3>" logs in
     Then user "<user3>" should be notified that "<bookTitle>" is available
     And user "<user3>" can borrow the book "<bookTitle>" and borrowed it
-    And user "<user1>" has 1 book that need to return
+    And user "<user3>" has 1 book that need to return
 
     Examples:
       | user1   | user2   | user3   | bookTitle |
