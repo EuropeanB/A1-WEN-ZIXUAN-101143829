@@ -36,3 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/A3/node_modules/
+/A3/package-lock.json
