@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/*
 Cypress.Commands.add('loginUser', (name) => {
   cy.visit('/');
   cy.get('#username').type(name);
@@ -34,7 +35,7 @@ Cypress.Commands.add('loginUser', (name) => {
 
   cy.get('#password').type(password);
   cy.get('#login-btn').click();
-});
+});*/
 
 Cypress.Commands.add('logoutUser', () => {
   cy.get('#logout-btn').click();
