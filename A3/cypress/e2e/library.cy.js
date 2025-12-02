@@ -94,7 +94,6 @@ describe('Library Book Management', () => {
     // Test scenario2
 
     // Alice logs in
-    //cy.loginUser('alice');
     cy.get('#username').type('alice');
     cy.get('#password').type('pass123');
     cy.get('#login-btn').click();
@@ -111,8 +110,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Borrowed "Moby Dick" successfully.');
 
     // Alice logs out and Bob logs in
-    cy.logoutUser();
-    //cy.loginUser('bob');
+    cy.get('#logout-btn').click();
     cy.get('#username').type('bob');
     cy.get('#password').type('pass456');
     cy.get('#login-btn').click();
@@ -137,8 +135,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Hold placed');
 
     // Bob logs out and Charlie logs in
-    cy.logoutUser();
-    //cy.loginUser('charlie');
+    cy.get('#logout-btn').click();
     cy.get('#username').type('charlie');
     cy.get('#password').type('pass789');
     cy.get('#login-btn').click();
@@ -163,8 +160,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Hold placed');
 
     // Charlie logs out and Alice logs in
-    cy.logoutUser();
-    //cy.loginUser('alice');
+    cy.get('#logout-btn').click();
     cy.get('#username').type('alice');
     cy.get('#password').type('pass123');
     cy.get('#login-btn').click();
@@ -181,8 +177,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Returned "Moby Dick" successfully.');
 
     // Alice logs out and Charlie logs in
-    cy.logoutUser();
-    //cy.loginUser('charlie');
+    cy.get('#logout-btn').click();
     cy.get('#username').type('charlie');
     cy.get('#password').type('pass789');
     cy.get('#login-btn').click();
@@ -202,8 +197,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'You are not first in line for "Moby Dick"');
 
     // Charlie logs out and Bob logs in
-    cy.logoutUser();
-    //cy.loginUser('charlie');
+    cy.get('#logout-btn').click();
     cy.get('#username').type('bob');
     cy.get('#password').type('pass456');
     cy.get('#login-btn').click();
@@ -230,8 +224,8 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Returned "Moby Dick" successfully.');
 
     // Bob logs out and Charlie logs in
-    cy.logoutUser();
-    //cy.loginUser('charlie');
+    cy.get('#logout-btn').click();
+    //cy.logoutUser();
     cy.get('#username').type('charlie');
     cy.get('#password').type('pass789');
     cy.get('#login-btn').click();

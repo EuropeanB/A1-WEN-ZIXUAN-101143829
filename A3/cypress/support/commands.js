@@ -36,7 +36,7 @@ Cypress.Commands.add('loginUser', (name) => {
   cy.get('#password').type(password);
   cy.get('#login-btn').click();
 });*/
-
+/*
 Cypress.Commands.add('logoutUser', () => {
   cy.get('#logout-btn').click();
-});
+});*/
