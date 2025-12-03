@@ -4,7 +4,7 @@ describe('Library Book Management', () => {
 
     // reset
     cy.request('POST', '/api/reset');
-    cy.request('POST', '/api/auth/logout');
+    //cy.request('POST', '/api/auth/logout');
 
     // visit the website
     cy.visit('/');
@@ -36,6 +36,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Borrowed "1984" successfully.');
 
     // Assertion: Check the book actually becomes unavailable
+    //            Book availability correctly asserted after borrow
     cy.get('#books-table')
       .contains('tr', '1984')
       .find('.status-pill')
@@ -58,6 +59,7 @@ describe('Library Book Management', () => {
     });
 
     // Assertion: Check bob actually cannot borrow this book because it checked out by someone
+    //            Inability to borrow unavailable book is asserted
     cy.get('#notif-list').should('contain', 'already checked out');
 
     // Bob logs out and Alice logs in
@@ -87,6 +89,7 @@ describe('Library Book Management', () => {
     cy.get('#user-summary').should('contain', 'bob');
 
     // Assertion: Check the book becomes available again
+    //            Book availability correctly asserted after return
     cy.contains('tr', '1984').should('contain', 'Available');
   });
 
@@ -187,6 +190,7 @@ describe('Library Book Management', () => {
 
     // Assertion: Check Charlie should haven't any notification
     //            because she is not the first user in FIFO queue
+    //            Hold queue FIFO ordering correctly asserted
     cy.get('#notif-list').should('contain', 'No notifications');
 
     // Charlie try to borrows this book
@@ -194,6 +198,10 @@ describe('Library Book Management', () => {
       cy.contains('Borrow').click();
     });
 
+    // Assertion:Charlie failed on borrows this book
+    //           because she is not the first user in FIFO queue
+    //           Hold queue FIFO ordering correctly asserted
+    //           Only notified user can borrow reserved book is asserted
     cy.get('#notif-list').should('contain', 'You are not first in line for "Moby Dick"');
 
     // Charlie logs out and Bob logs in
@@ -206,6 +214,7 @@ describe('Library Book Management', () => {
     cy.get('#user-summary').should('contain', 'bob');
 
     // Assertion: Check Bob should get the notification because he is the first in line for this book
+    //            Notifications to correct user is asserted
     cy.get('#notif-list').should('contain', 'is ready for you to borrow');
 
     // Bob try to borrows this book
@@ -214,6 +223,7 @@ describe('Library Book Management', () => {
     });
 
     // Assertion: Check the specific book was checked out by someone
+    //            Only notified user can borrow reserved book is asserted
     cy.get('#notif-list').should('contain', 'Borrowed "Moby Dick" successfully.');
 
     cy.contains('#borrowed-table tr', 'Moby Dick')
@@ -234,14 +244,17 @@ describe('Library Book Management', () => {
     cy.get('#user-summary').should('contain', 'charlie');
 
     // Assertion: Check Charlie should get the notification because he is the first in line for this book
+    //            Notifications to correct user is asserted
     cy.get('#notif-list').should('contain', 'is ready for you to borrow');
 
-    // Bob try to borrows this book
+    // Charlie try to borrows this book
     cy.contains('tr', 'Moby Dick').within(() => {
         cy.contains('Borrow').click();
     });
 
     // Assertion: Check the specific book was checked out by someone
+    //            Only notified user can borrow reserved book is asserted
+    //            Queue advances properly whens borrowed/returned is asserted
     cy.get('#notif-list').should('contain', 'Borrowed "Moby Dick" successfully.');
 
     cy.contains('#borrowed-table tr', 'Moby Dick')
@@ -292,6 +305,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Borrowed "Jane Eyre" successfully.');
 
     // Assertion: Check Alice borrowed three books
+    //            3 book borrowing limit is enforced and asserted
     cy.get('#user-summary').should('contain', '3/3');
 
     // Alice try to borrow fourth book
@@ -300,6 +314,7 @@ describe('Library Book Management', () => {
     });
 
     // Assertion: Alice failed on borrowing because she reached the borrow limit
+    //            3 book borrowing limit is enforced and asserted
     cy.get('#notif-list')
         .should('be.visible')
         .should('contain', 'borrowing limit')
@@ -341,6 +356,7 @@ describe('Library Book Management', () => {
     cy.get('#login-btn').click();
 
     // Assertion: Check Charlie should get the notification because he is the first in line for this book
+    // Notification received when user returns book (while at limit) and is next in hold queue
     cy.get('#notif-list').should('contain', 'is ready for you to borrow');
 
     cy.contains('#borrowed-table tr', 'Jane Eyre')
@@ -351,6 +367,7 @@ describe('Library Book Management', () => {
     cy.get('#notif-list').should('contain', 'Returned "Jane Eyre" successfully.');
 
     // Assertion: Check Alice borrowed three books
+    //            Borrowing capacity increases after return is asserted
     cy.get('#user-summary').should('contain', '2/3');
 
     // Alice try to borrows this book
@@ -359,6 +376,7 @@ describe('Library Book Management', () => {
     });
 
     // Assertion: Check the specific book was checked out by someone
+    //            Borrowing capacity increases after return is asserted
     cy.get('#notif-list').should('contain', 'Borrowed "Moby Dick" successfully.');
 
 
